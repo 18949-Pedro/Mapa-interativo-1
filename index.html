@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameMaps Scan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Menu Toggle Button -->
+<button class="menu-toggle" id="menuToggleBtn">
+    <img src="img/icone-marcador.png" alt="Menu">
+</button>
+
+<!-- Side Panel Menu -->
+<div class="side-panel hidden" id="sidePanel">
+    <div class="panel-header">Mapa Interativo</div>
+    
+    <!-- Mapa 1: Hollow Knight -->
+    <div id="map1-panel">
+        <div class="category-section">
+            <div class="category-title">Pontos de Interesse</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('bench_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Bench.png');"></div>
+                    <div class="map-item-name">Banco</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('transport_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Stag.webp');"></div>
+                    <div class="map-item-name">Transporte</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('Springs_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Springs.webp');"></div>
+                    <div class="map-item-name">Springs</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('shop_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Token_Marker.webp');"></div>
+                    <div class="map-item-name">Loja</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Recursos</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('soul_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Vessel_Fragment.webp');"></div>
+                    <div class="map-item-name">Alma</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('mask_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Health_Piece.webp');"></div>
+                    <div class="map-item-name">Máscara</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('palore_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pale_Ore.webp');"></div>
+                    <div class="map-item-name">Minério Pálido</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('vital_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Cocoon.webp');"></div>
+                    <div class="map-item-name">Sangue Vital</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Combate & Habilidades</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('Boss_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Grimm_Troupe.webp');"></div>
+                    <div class="map-item-name">Chefes</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('charm_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('Amuletos/Alma do Rei.webp');"></div>
+                    <div class="map-item-name">Amuletos</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ability_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img/Habilidades/Monarch_Wings_Icon.webp');"></div>
+                    <div class="map-item-name">Habilidades</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('nail_art_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Cyclone_Slash.webp');"></div>
+                    <div class="map-item-name">Artes do Ferrão</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Itens</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('key_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Elegant_Key.webp');"></div>
+                    <div class="map-item-name">Chaves</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('relic_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Arcane_Egg.webp');"></div>
+                    <div class="map-item-name">Relíquias</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('grub_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Grub.webp');"></div>
+                    <div class="map-item-name">Grubs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mapa 2: Silksong -->
+    <div id="map2-panel" style="display: none;">
+        <div class="category-section">
+            <div class="category-title">Ferramentas</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('ss_red_tool_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/red-tools.png');"></div>
+                    <div class="map-item-name">Ferramentas (Vermelhas)</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_blue_tool_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/blue-tools.png');"></div>
+                    <div class="map-item-name">Ferramentas (Azul)</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_yellow_tool_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/yellow-tools.png');"></div>
+                    <div class="map-item-name">Ferramentas (Amarelo)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Habilidades & Brasões</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('ss_ability_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/skills.png');"></div>
+                    <div class="map-item-name">Abilidades</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_crest_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/crests.png');"></div>
+                    <div class="map-item-name">Brasões</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Navegação & Memórias</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('ss_bell_way_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/via-bell.png');"></div>
+                    <div class="map-item-name">Vias Campanárias</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_memory_locket_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Memory_Locket.png');"></div>
+                    <div class="map-item-name">Memory Locket</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Recursos & Vida</div>
+            <div class="items-grid">
+        <div class="map-item" onclick="toggleLayer('ss_shard_bundle_Layer', this)">
+            <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/SS_Ancient_Mask.png');"></div>
+            <div class="map-item-name">Máscara</div>
+        </div>
+
+        <div class="map-item" onclick="toggleLayer('ss_spool_fragment_Layer', this)">
+            <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Spool_Fragment.png');"></div>
+            <div class="map-item-name">Fragmento de Carretel</div>
+        </div>
+                </div>
+
+                <div class="map-item" onclick="toggleLayer('ss_lost_flea_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Map_Pin_Flea.png');"></div>
+                    <div class="map-item-name">Pulga</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title">Pontos de Interesse</div>
+            <div class="items-grid">
+                <div class="map-item" onclick="toggleLayer('ss_shop_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Token_Marker.webp');"></div>
+                    <div class="map-item-name">Lojas</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_boss_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Grimm_Troupe.webp');"></div>
+                    <div class="map-item-name">Boss</div>
+                </div>
+                <div class="map-item" onclick="toggleLayer('ss_bench_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Bench.png');"></div>
+                    <div class="map-item-name">Bancos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Viewport -->
+<div id="viewport">
+    <div id="mapContainer">
+
+        <!-- Mapa base -->
+        <img class="layer" id="baseMap" src="img/mapa.png">
+
+        <!-- Camadas do Mapa 1 (Hollow Knight) -->
+        <div class="markers-layer map1-layer" id="bench_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="transport_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="Springs_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="shop_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="soul_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="mask_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="Boss_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="Warriors_Grave_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="palore_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="vital_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="charm_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="ability_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="nail_art_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="key_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="relic_Layer" style="display: none;"></div>
+        <div class="markers-layer map1-layer" id="grub_Layer" style="display: none;"></div>
+
+        <!-- Camadas do Mapa 2 (Silksong) -->
+        <div class="markers-layer map2-layer" id="ss_red_tool_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_blue_tool_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_yellow_tool_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_ability_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_crest_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_bell_way_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_memory_locket_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_lost_flea_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_shard_bundle_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_wish_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_craftmetal_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_shop_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_boss_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_bench_Layer" style="display: none;"></div>
+    </div>
+</div>
+
+<!-- Botão inferior esquerdo -->
+<div class="ui-bottom-left">
+    <button class="btn" id="btnChangeMap">
+        <img src="img/map-icon.png">
+    </button>
+</div>
+
+<script src="java/map.js"></script>
+</body>
+</html>
