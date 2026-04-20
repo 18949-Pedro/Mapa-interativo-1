@@ -914,6 +914,7 @@ const btnChangeMap = document.getElementById("btnChangeMap");
 const baseMap = document.getElementById("baseMap");
 const map1Panel = document.getElementById("map1-panel");
 const map2Panel = document.getElementById("map2-panel");
+const mapTitle = document.getElementById("mapTitle");
 
 let mapaAtual = 1;
 
@@ -922,6 +923,7 @@ btnChangeMap.addEventListener("click", () => {
         // Mudar para Silksong
         baseMap.src = "img/Silksong_Map.png";
         mapaAtual = 2;
+        mapTitle.textContent = "Silksong";
         
         // Trocar painéis
         map1Panel.style.display = "none";
@@ -941,6 +943,7 @@ btnChangeMap.addEventListener("click", () => {
         // Voltar para Hollow Knight
         baseMap.src = "img/mapa.png";
         mapaAtual = 1;
+        mapTitle.textContent = "Hollow Knight";
         
         // Trocar painéis
         map2Panel.style.display = "none";
