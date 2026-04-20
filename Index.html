@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hollow Knight - Guia Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d0d12;
+            --bg-card: #16161d;
+            --bg-hover: #1e1e28;
+            --text-main: #e8e8f0;
+            --text-dim: #9999aa;
+            --accent-hk: #a78bfa;
+            --accent-ss: #f472b6;
+            --border: rgba(255, 255, 255, 0.06);
+            --glow-hk: rgba(167, 139, 250, 0.2);
+            --glow-ss: rgba(244, 114, 182, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(167, 139, 250, 0.04), transparent 40%),
+                radial-gradient(circle at 70% 80%, rgba(244, 114, 182, 0.04), transparent 40%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            padding: 3rem 0;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(120deg, var(--accent-hk), var(--accent-ss));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.03em;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+
+        /* Main Screen */
+        .main-screen {
+            display: block;
+        }
+
+        .main-screen.hidden {
+            display: none;
+        }
+
+        .game-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .game-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-hk);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .game-btn.silksong::before {
+            background: var(--accent-ss);
+        }
+
+        .game-btn:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-hk);
+            box-shadow: 0 20px 60px var(--glow-hk);
+        }
+
+        .game-btn.silksong:hover {
+            border-color: var(--accent-ss);
+            box-shadow: 0 20px 60px var(--glow-ss);
+        }
+
+        .game-btn:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-btn h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Game Section */
+        .game-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .game-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 0.85rem 1.75rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .back-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-hk);
+            color: var(--text-main);
+            transform: translateX(-4px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title .line {
+            width: 70px;
+            height: 2px;
+            background: var(--accent-hk);
+            margin: 0 auto;
+        }
+
+        .section-title.silksong .line {
+            background: var(--accent-ss);
+        }
+
+        /* Category Buttons */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .category-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2.5rem 1.75rem;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .category-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-hk);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px var(--glow-hk);
+        }
+
+        .category-btn.silksong:hover {
+            border-color: var(--accent-ss);
+            box-shadow: 0 12px 35px var(--glow-ss);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .category-btn h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .game-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* Content Area */
+        .content-area {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .content-area.active {
+            display: block;
+        }
+
+        .content-area h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+        }
+
+        .content-area .content-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-dim);
+        }
+
+        .content-area .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-hk);
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 2rem;
+            }
+
+            .content-area h2 {
+                font-size: 1.85rem;
+            }
+        }
+    
+        /* PAP - Mapa Interativo Embutido */
+        .pap-map-section {
+            margin-top: 3rem;
+        }
+        .pap-map-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .pap-map-header h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.75rem;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+        .pap-map-header p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            max-width: 560px;
+        }
+        .pap-map-open {
+            display: inline-block;
+            padding: 0.7rem 1.25rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pap-map-open:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.35);
+        }
+        .pap-map-frame-wrap {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--bg-card);
+            box-shadow: 0 20px 60px rgba(118, 75, 162, 0.18);
+        }
+        .pap-map-frame-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 75vh;
+            min-height: 600px;
+            border: 0;
+        }
+        .pap-map-hint {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            margin-top: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .pap-map-frame-wrap iframe { height: 60vh; min-height: 420px; }
+        }
+    </style>
+
+        <style>
+          .amuleto-categoria {
+            margin: 0.5rem 0;
+            border: 1px solid #555;
+            border-radius: 6px;
+            overflow: hidden;
+          }
+          .amuleto-categoria-btn {
+            width: 100%;
+            background: #2a2a3a;
+            color: #c8b8e8;
+            border: none;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+          }
+          .amuleto-categoria-btn:hover {
+            background: #3a3a5a;
+          }
+          .amuleto-categoria-btn.aberto {
+            background: #3a2a5a;
+            color: #e0d0ff;
+          }
+          .amuleto-categoria-btn .seta {
+            transition: transform 0.3s;
+          }
+          .amuleto-categoria-btn.aberto .seta {
+            transform: rotate(180deg);
+            display: inline-block;
+          }
+          .amuleto-categoria-conteudo {
+            display: none;
+            padding: 0.75rem 1rem;
+            background: #1a1a2a;
+          }
+          .amuleto-categoria-conteudo.aberto {
+            display: block;
+          }
+          .amuleto-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+            border-bottom: 1px solid #333;
+          }
+          .amuleto-item img {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+          }
+          .amuleto-item p {
+            margin: 0;
+          }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">GameMaps Scan</h1>
+            <p class="subtitle">Guia Interativo</p>
+        </header>
+
+        <!-- Main Selection Screen -->
+        <div id="main-screen" class="main-screen">
+            <div class="game-selection">
+                <button class="game-btn" onclick="showGame('hollow-knight')">
+                    <h2>Hollow Knight</h2>
+                </button>
+
+                <button class="game-btn silksong" onclick="showGame('silksong')">
+                    <h2>Silksong</h2>
+                </button>
+
+                <button class="game-btn" onclick="showGame('pap-project')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <h2>Sobre o Projeto PAP</h2>
+                </button>
+            </div>
+        </div>
+
+        <!-- Hollow Knight Section -->
+        <div id="hollow-knight-section" class="game-section">
+            <button class="back-btn" onclick="showMain()">
+                <span>←</span> Voltar
+            </button>
+
+            <div class="section-title">
+                <h1>Hollow Knight</h1>
+                <div class="line"></div>
+            </div>
+
+            <div class="category-grid">
+                <button class="category-btn" onclick="showContent('hk-sobre')">
+                    <span class="category-icon">
+                        <img src="img/hollow knight icon.png" style="width: 150px; height: 150px">
+                    </span>
+                    <h3>Sobre o Jogo</h3>
+                </button>
+
+                <button class="category-btn" onclick="showContent('hk-historia')">
+                    <span class="category-icon">📖</span>
+                    <h3>História</h3>
+                </button>
+
+                <button class="category-btn" onclick="showContent('hk-amuletos')">
+                    <span class="category-icon">
+                        <img src="img-pins/Notch.webp" Style="width: 150px; height: 150px">
+                    </span>
+                    <h3>Amuletos</h3>
+                </button>
+
+                <button class="category-btn" onclick="showContent('hk-vida')">
+                    <span class="category-icon">❤️</span>
+                    <h3>Vida / Alma</h3>
+                </button>
+
+                <button class="category-btn" onclick="showContent('hk-ferrao')">
+                    <span class="category-icon">
+                        <img src="img/Pure_Nail.png" style="width: 60px; height:150px;">
+                    </span>
+                    <h3>Ferrão</h3>
+                </button>
+
+                <button class="category-btn" onclick="showContent('hk-Abilidades')">
+                    <span class="category-icon">
+                        <img src="img/Hunters_journal.webp" style="width: 150px; height: 150px">
+                    </span>
+                    <h3>Abilidades</h3>
+                </button>
+            </div>
+
+            <!-- Content Area for Hollow Knight -->
+            <div id="hk-content" class="content-area"></div>
+        </div>
+
+        <!-- Silksong Section -->
+        <div id="silksong-section" class="game-section">
+            <button class="back-btn" onclick="showMain()">
+                <span>←</span> Voltar
+            </button>
+
+            <div class="section-title silksong">
+                <h1>Silksong</h1>
+                <div class="line"></div>
+            </div>
+
+            <div class="category-grid">
+                <button class="category-btn silksong" onclick="showContent('ss-sobre')">
+                    <span class="category-icon">
+                            <img src="img/hollow knight silksong icon.png" style="width: 150px; height: 150px;">
+                    </span>
+                    <h3>Sobre o Jogo</h3>
+                </button>
+
+                <button class="category-btn silksong" onclick="showContent('ss-historia')">
+                    <span class="category-icon">📖</span>
+                    <h3>História</h3>
+                </button>
+
+                <button class="category-btn silksong" onclick="showContent('ss-amuletos')">
+                    <span class="category-icon">💎</span>
+                    <h3>Ferramentas</h3>
+                </button>
+
+                <button class="category-btn silksong" onclick="showContent('ss-vida')">
+                    <span class="category-icon">❤️</span>
+                    <h3>Vida / seda</h3>
+                </button>
+
+                <button class="category-btn silksong" onclick="showContent('ss-ferrao')">
+                    <span class="category-icon">⚔️</span>
+                    <h3>Agulha</h3>
+                </button>
+
+                <button class="category-btn silksong" onclick="showContent('ss-Abilidades')">
+                    <span class="category-icon">
+                        <img src="img/Hunters_journal.webp" style="width: 150px; height: 150px;">
+                    </span>
+                    <h3>Abilidades</h3>
+                </button>
+            </div>
+
+            <!-- Content Area for Silksong -->
+            <div id="ss-content" class="content-area"></div>
+        </div>
+
+        <!-- PAP Project Section -->
+        <div id="pap-project-section" class="game-section">
+            <button class="back-btn" onclick="showMain()">
+                <span>←</span> Voltar
+            </button>
+
+            <div class="section-title">
+                <h1>Sobre o Projeto PAP</h1>
+                <div class="line" style="background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+            </div>
+
+            <div class="content-area active" style="display: block;">
+                <h2>Projeto de Aptidão Profissional</h2>
+                <div class="content-text">
+                    <p>Este site foi desenvolvido como parte do meu Projeto de Aptidão Profissional (PAP).</p>
+                    
+                    <p>O objetivo deste projeto é criar um guia interativo sobre os jogos Hollow Knight e Hollow Knight: Silksong, apresentando informações detalhadas sobre mecânicas de jogo, itens e inimigos do jogo muito mais.</p>
+                    
+                    <p>Através deste trabalho, procurei demonstrar as competências técnicas adquiridas ao longo do curso, incluindo desenvolvimento web, design de interface e organização de conteúdo.</p>
+                </div>
+
+                <!-- Mapa Interativo Embutido -->
+                <div class="pap-map-section">
+                    <div class="pap-map-header">
+                        <div>
+                            <h3>Mapa Interativo</h3>
+                            <p>Demonstração do mapa interativo de Hollow Knight e Silksong, com sistema de camadas filtráveis para bancos, chefes, amuletos, ferramentas e muito mais.</p>
+                                                <p class="pap-map-hint">Use o botão de menu para filtrar camadas · Botão inferior esquerdo alterna entre Hollow Knight e Silksong.</p>
+                        </div>
+                        <a class="pap-map-open" href="Mapa.html" target="_blank" rel="noopener">Abrir em nova aba ↗</a>
+                    </div>
+
+                    <div class="pap-map-frame-wrap">
+                        <iframe src="Mapa.html" title="Mapa Interativo Hollow Knight e Silksong" loading="lazy"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const contentData = {
+            'hk-sobre': {
+                title: 'Sobre Hollow Knight',
+                content: `
+                    <p>Hollow Knight é um jogo indie de gênero metroidvania desenvolvido e publicado pela Team Cherry, o jogo está desponivel em todas as plataformas, em hollow knight os jogador controla o knight, o jogador vai descer e explorar as ruínas  de hallownest.</p>
+                    
+                    <p>Em Hollow Knight existem dois mundos, o mundo real e mundo dos sonhos, os dois mundos têm os seus seres superiores(Deuses) além dos dois mundos tem mais 3 elementos muito importantes para este mundo, o vazio, a alma, e a essência esses elementos compõem quase tudo neste mundo.</p> `},
+            'hk-historia': {
+                title: 'História',
+                content: `
+                    <p>A história de Hollow Knight acontece num antigo reino subterrâneo chamado Hallownest, um lugar que no passado foi próspero e cheio de vida, habitado por vários tipos de insetos inteligentes.</p>
+                    <p>O reino de Hallownest foi criado e governado por um ser superior chamada Rei Pálido, o Rei Pálido usou o seu poder para expandir a mente dos insetos que o seguiam concedendo-lhes conhecimento, fazendo Hallownest crescer e tornar-se um grande Reino subterrâneo, mas nem todas as espécies que estavam perto do território do rei pálido aceitaram seguir o rei pálido o que levou a um conflito com a Tribo louva-a-deus e o ninho profundo, depois de um tempo o rei pálido fez um acordo de paz com a Tribo louva-a-deus em que o rei pálido pararia de tentar tomar o território da Tribo louva-a-deus e a  Tribo louva-a-deus selaria a passagem para o ninho profundo.</p>
+                    <p>Antes do Rei Pálido criar o seu reino, existia um outro ser superior que estava ligada ao mundo dos sonhos esse ser era a Radiância, a criadora da tribo mariposas, a tribo mariposas venerava a Radiância, mas quando o Rei pálido apareceu e criou o seu reino as mariposas foram atraídas pela luz do rei pálido e começaram a esquecer da sua criadora, por ser esquecida a Radiância ficou mais forte e muito com o tempo ela começou a invadir os sonhos dos habitantes de Hallownest, espalhando uma infecção que dominava as mentes e transformava os insetos em criaturas agressivas e descontroladas. </p>
+                    <p>Para salvar o seu reino o Rei Pálido começou a procurar uma forma de parar a infecção, e durante a sua pesquisa o rei pálido encontrou o vazio, e criou o plano de usar o vazio e as sementes da Dama Branca para criar um receptáculo perfeito para prender a Radiância e selar de vez a infecção. Esses seres nasceram do vazio e foram feitos para não terem emoções nem pensamentos, para que pudessem conter a Radiance dentro deles, entre todos os receptáculos , um foi escolhido como o mais “perfeito”: o Hollow Knight depois de conseguir o receptáculo o Rei Pálido selou o abismo prendendo todos os outros receptáculos lá dentro.</p>
+                    <p>O Hollow Knight foi selado no Templo do ovo negro para aprisionar a infecção dentro de si, o selo foi feito usando 3 seres que aceitaram se tornar sonhadores para ajudarem a manter a infecção presa para sempre, mas o plano deu errado o receptáculo que não era prefeito e a radiância conseguiu infectar ele por causa disso, a Radiância começou lentamente a escapar novamente, e Hallownest entrou em ruínas por causa da infecção.</p>
+                    <p>Anos depois um dos receptáculos(o Cavaleiro) que conseguiu fugir do abismo voltou para Hallownest porque algo desconhecido o chamou para Hallownest, enquanto explora as ruínas de Hallownest, no caminho verde o Cavaleiro encontra Hornet que estava perto de um outro receptáculo que ela matou, a Hornet luta com o cavaleiro, depois de derrotar a hornet o cavaleiro encontra-se com os três sonhadores e um dos três sonhadores Lurien diz para o cavaleiro parar de tentar romper o Selo.</p>
+                    <p>Depois de um tempo o cavaleiro encontra a memória dos sonhadores na Terra do Descanso e Lurien tenta parar ele prendendo ele no mundo dos sonhos, dentro do mundo dos sonhos onde o cavaleiro encontra a Vidente a última mariposa que ainda está viva ela tira o cavaleiro do mundo dos sonho e entrega-lhe o ferrão dos sonhos, para ele quebrar os selo dos sonhadores.</p>
+                    <p>O cavaleiro vai atrás dos sonhadores, e ele usa o ferrão dos sonhos para entra na mente dos sonhadores que contém uma forma vulnerável do respectivo Sonhador matando-os nesta forma e absorvendo-os para quebra seu Selo. O Cavaleiro encontra o corpo físico de Lurien no Pináculo do Observador depois de derrotar os Cavaleiros Sentinela, encontra o corpo físico de Hera no Covil da Besta, e  no Cânion da Névoa dentro dos Arquivos da Professora o Cavaleiro recebe a ajuda de Quirrel o antigo aluno de Monomon a quebrar o selo.</p>
+                    <p>Depois de quebrar todos os selos o Cavaleiro encontra Hornet mais uma vez e eles lutam mais uma vez, depois de vencer o Cavaleiro entra no corpo do wyrm e consegue o selo do rei, depois que o Cavaleiro consegue o selo do rei o corpo do wyrm que já está em decomposição a anos começa a desmoronar e o cavaleiro é salvo pela Hornet, depois disso o Cavaleiro volta ao abismo e consegue se lembrar do seu passado.</p>
+                    <p>Depois de sair do abismo o Cavaleiro vai ao Templo do Ovo Negro e luta contra o Hollow Knight e com a ajuda da Hornet que prendeu Cavaleiro Vazio, o cavaleiro usa o ferrão dos sonhos para entrar na mente do Cavaleiro Vazio e luta contra a Radiância, depois de lutar por um tempo o Cavaleiro e o Hollow Knight a forma de vazio e se juntam para matar a Radiância de uma vez por todas.</p>
+                    `},
+
+            'hk-amuletos': {
+                title: 'Amuletos',
+                content: `
+                    <p>Os amuletos são usados para melhorar o personagem, eles podem aumentar a vida, o dano das magias ou da tua arma e outras coisas.
+ Existe um total 45 Amuletos, embora apenas 40 possam ser mantidos de uma só vez, pois alguns Amuletos podem ser substituídos por outros diferentes ou melhorados ao longo do jogo.</p>
+                    <p style="color: white; font-weight: bold;">Encaixes</p>
+                    <p>Os Encaixes de Amuletos são necessários para equipar os Amuletos, amuletos diferentes exigem um número diferente de Encaixes, o Cavaleiro começa com 3 Encaixes e pode encontrar mais 8 explorando o mapa, totalizando 11 Encaixes.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img-pins/Notch.webp" alt="Ferrão Velho" style="width: 150px; height:150px;">
+                </div>
+                <p style="color: white; font-weight: bold;">Amuletos que podem ser substituídos</p>
+                <p>O amuleto Alma do Rei pode ser substituído pelo amuleto Coração Vazio.
+O amuleto Criança Grimm pode ser substituído pelo amuleto Melodia Despreocupada.</p>
+                <p style="color: white; font-weight: bold;">Amuletos que podem ser melhorados</p>
+                <p>Amuletos frágeis quebram quando o portador morre mas podem ser melhorados para versões inquebráveis.</p>
+                <p>Ganância Frágil  ——> Ganância Inquebrável.</p>
+                <p>Coração Frágil ——> Coração Inquebrável.</p>
+                <p>Força Frágil  ——> Força Inquebrável.</p>
+                <p style="color: white; font-weight: bold;">Lista de amuletos</p>
+
+                <!-- Amuletos de Exploração -->
+                <div class="amuleto-categoria">
+                  <button class="amuleto-categoria-btn" id="btn-exploracao" onclick="toggleCategoria('exploracao')">
+                     Amuletos de Exploração <span class="seta">▼</span>
+                  </button>
+
+                  <div class="amuleto-categoria-conteudo" id="cat-exploracao">
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Bússola Caprichosa.webp" alt="Bússola Caprichosa">
+                      <p>Bússola Caprichosa: O portador será capaz de ver a sua localização no mapa.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Enxame de Colecionadores.webp" alt="Enxame de Colecionadores">
+                      <p>Enxame de Colecionadores: Um enxame seguirá o portador e vai coletar todo o Geo deixado no chão depois de derrotar inimigos ou abrir baús.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Mestre da Esquiva.webp" alt="Mestre da Esquiva">
+                      <p>Mestre da Esquiva: O portador será capaz de esquivar mais frequentemente, e também será capaz de esquivar para baixo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Mestre da Corrida.webp" alt="Mestre da Corrida">
+                      <p>Mestre da Corrida: Aumenta a velocidade do portador.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Ganância Frágil.webp" alt="Ganância Frágil">
+                      <p>Ganância Frágil: Faz com que o portador encontre mais Geo ao derrotar inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Ganância Inquebrável.webp" alt="Ganância Inquebrável">
+                      <p>Ganância Inquebrável: Faz com que o portador encontre mais Geo ao derrotar inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Coração Vazio.webp" alt="Coração Vazio">
+                      <p>Coração Vazio: Unifica o vazio sob a vontade do portador. Esse Amuleto é uma parte do seu portador e não pode ser desequipado.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Amuletos de Combate -->
+                <div class="amuleto-categoria">
+                  <button class="amuleto-categoria-btn" id="btn-combate" onclick="toggleCategoria('combate')">
+                     Amuletos de Combate <span class="seta">▼</span>
+                  </button>
+                  <div class="amuleto-categoria-conteudo" id="cat-combate">
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Carapaça Robusta.webp" alt="Carapaça Robusta">
+                      <p>Carapaça Robusta: Aumenta a resistência do portador e ao se recuperar de danos, o portador permanecerá invulnerável por mais tempo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Elegia da Larvamosca.webp" alt="Elegia da Larvamosca">
+                      <p>Elegia da Larvamosca: Quando o portador está com a vida cheia, ele lançará feixes de energia branca através de seu ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Força Frágil.webp" alt="Força Frágil">
+                      <p>Força Frágil: Fortalece o portador, aumentando o dano causado aos inimigos com o ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Força Inquebrável.webp" alt="Força Inquebrável">
+                      <p>Força Inquebrável: Fortalece o portador, aumentando o dano causado aos inimigos com o ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Corpo Firme.webp" alt="Corpo Firme">
+                      <p>Corpo Firme: Permite que se mantenha firme e continue atacando.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Golpe Pesado.webp" alt="Golpe Pesado">
+                      <p>Golpe Pesado: Aumenta a força do ferrão do portador, causando inimigos a recuar mais quando atingidos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Corte Rápido.webp" alt="Corte Rápido">
+                      <p>Corte Rápido: Permite que o portador corte muito mais rapidamente com seu ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Ferrão Longo.webp" alt="Ferrão Longo">
+                      <p>Ferrão Longo: Aumenta o alcance do ferrão do portador, permitindo que ele ataque inimigos de mais longe.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Marca de Orgulho.webp" alt="Marca de Orgulho">
+                      <p>Marca de Orgulho: Aumenta consideravelmente o alcance do ferrão do portador, permitindo-lhe atingir os inimigos de mais longe.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Fúria dos Caídos.webp" alt="Fúria dos Caídos">
+                      <p>Fúria dos Caídos: Quando próximo da morte, a força do portador irá aumentar.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Espinhos da Agonia.webp" alt="Espinhos da Agonia">
+                      <p>Espinhos da Agonia: Quando dano é recebido, brotam-se vinhas espinhentas que machucam inimigos próximos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Carapaça de Baldur.webp" alt="Carapaça de Baldur">
+                      <p>Carapaça de Baldur: Protege o portador com uma carapaça dura enquanto estiver focando ALMA, a carapaça não é indestrutível e se quebrará se absorver muito dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Insígnia do Defensor.webp" alt="Insígnia do Defensor">
+                      <p>Insígnia do Defensor: O portador irá emitir um odor heróico.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Sombra Afiada.webp" alt="Sombra Afiada">
+                      <p>Sombra Afiada: Ao se utilizar Esquiva Sombria, o corpo do portador se afiará e danificará inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Glória do Mestre do Ferrão.webp" alt="Glória do Mestre do Ferrão">
+                      <p>Glória do Mestre do Ferrão: Aumenta a maestria do portador sob as Artes do Ferrão, permitindo-o focar seus poderes mais rapidamente, e os liberar mais cedo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Escudo dos Sonhos.webp" alt="Escudo dos Sonhos">
+                      <p>Escudo dos Sonhos: Conjura um escudo que segue o portador e tenta protegê-lo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Melodia Despreocupada.webp" alt="Melodia Despreocupada">
+                      <p>Melodia Despreocupada: Contém uma música de proteção que pode defender o portador de danos.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Amuletos de Vida -->
+                <div class="amuleto-categoria">
+                  <button class="amuleto-categoria-btn" id="btn-vida" onclick="toggleCategoria('vida')">
+                     Amuletos de Vida <span class="seta">▼</span>
+                  </button>
+                  <div class="amuleto-categoria-conteudo" id="cat-vida">
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Coração Frágil.webp" alt="Coração Frágil">
+                      <p>Coração Frágil: Aumenta a vida do portador, permitindo-lhe sofrer mais dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Coração Inquebrável.webp" alt="Coração Inquebrável">
+                      <p>Coração Inquebrável: Aumenta a vida do portador, permitindo-lhe sofrer mais dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Coração de Sangue Vital.webp" alt="Coração de Sangue Vital">
+                      <p>Coração de Sangue Vital: Ao descansar, o portador irá ganhar uma camada de Sangue Vital que lhe protege de uma moderada quantidade de dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Núcleo de Sangue Vital.webp" alt="Núcleo de Sangue Vital">
+                      <p>Núcleo de Sangue Vital: Ao descansar, o portador irá ganhar uma camada de Sangue Vital que lhe protege de uma grande quantidade de dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Bênção de Joni.webp" alt="Bênção de Joni">
+                      <p>Bênção de Joni: O portador terá uma carapaça mais saudável e poderá receber mais dano, porém ele será incapaz de se curar focando ALMA.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Sangue da Colmeia.webp" alt="Sangue da Colmeia">
+                      <p>Sangue da Colmeia: Cura as feridas do portador ao longo do tempo, permitindo-o recuperar vida sem focar ALMA.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Amuletos de Magia -->
+                <div class="amuleto-categoria">
+                  <button class="amuleto-categoria-btn" id="btn-magia" onclick="toggleCategoria('magia')">
+                     Amuletos de Magia <span class="seta">▼</span>
+                  </button>
+                  <div class="amuleto-categoria-conteudo" id="cat-magia">
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Apanhador de Almas.webp" alt="Apanhador de Almas">
+                      <p>Apanhador de Almas: Aumenta a quantidade de alma recebida quando um oponente é atingido com o ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Pedra do Xamã.webp" alt="Pedra do Xamã">
+                      <p>Pedra do Xamã: Aumenta o poder das magias, causando mais dano aos oponentes.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Devorador de Almas.webp" alt="Devorador de Almas">
+                      <p>Devorador de Almas: Aumenta consideravelmente a quantidade de ALMA recebida quando um oponente é atingido com o ferrão.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Canção das Larvas.webp" alt="Canção das Larvas">
+                      <p>Canção das Larvas: Recebe alma toda a vez que receber dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Dobrador de Magias.webp" alt="Dobrador de Magias">
+                      <p>Dobrador de Magias: Reduz o custo de ALMA para a canalização de magias.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Ninho de Flukes.webp" alt="Ninho de Flukes">
+                      <p>Ninho de Flukes: Transforma a magia Espírito Sic Vingativo em uma horda de voláteis bebês flukes.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Foco Rápido.webp" alt="Foco Rápido">
+                      <p>Foco Rápido: Aumenta a velocidade do foco de ALMA, permitindo que o portador se cure mais rapidamente.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Foco Profundo.webp" alt="Foco Profundo">
+                      <p>Foco Profundo: O portador irá focar ALMA em um ritmo mais lento, mas o efeito de cura será dobrado.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Cogumelo com Esporos.webp" alt="Cogumelo com Esporos">
+                      <p>Cogumelo com Esporos: Ao focar a ALMA, emite uma nuvem de esporos que danifica lentamente os inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Forma de Unn.webp" alt="Forma de Unn">
+                      <p>Forma de Unn: Enquanto estiver focando ALMA, o portador assumirá uma nova forma e poderá se mover livremente para evitar inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Portador dos Sonhos.webp" alt="Portador dos Sonhos">
+                      <p>Portador dos Sonhos: Permite ao portador carregar o Ferrão dos Sonhos mais rapidamente e coletar mais ALMA atingindo inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Alma do Rei.webp" alt="Alma do Rei">
+                      <p>Alma do Rei: O portador irá lentamente absorver a ALMA ilimitada contida interiormente. Abre o caminho para um local de nascimento.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Amuletos de Invocação -->
+                <div class="amuleto-categoria">
+                  <button class="amuleto-categoria-btn" id="btn-invocacao" onclick="toggleCategoria('invocacao')">
+                     Amuletos de Invocação <span class="seta">▼</span>
+                  </button>
+                  <div class="amuleto-categoria-conteudo" id="cat-invocacao">
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Útero Brilhante.webp" alt="Útero Brilhante">
+                      <p>Útero Brilhante: Drena a ALMA de seu portador e a utiliza para parir crias, as crias não desejam comer e nem viver, e se sacrificarão para proteger o seu progenitor.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Canção das Tecelãs.webp" alt="Canção das Tecelãs">
+                      <p>Canção das Tecelãs: Invoca pequenas tecelãs para dar ao portador solitário um pouco de companheirismo e proteção.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="Amuletos/Criança Grimm.webp" alt="Criança Grimm">
+                      <p>Criança Grimm: Este amuleto invoca a Criança Grimm que dá níveis variados de dano dependendo da sua Fase.</p>
+                    </div>
+                  </div>
+                </div>`},
+
+            'hk-vida': {
+                title: 'Vida / Alma',
+                content: `
+                    <p> Fragmentos de Máscara(vida): estes fragmentos são usados para aumentar a vida do Cavaleiro, a vida é representada por máscaras.</p>
+                    <p> O Cavaleiro começa o jogo com 5 máscaras, e pode obter mais coletando Fragmentos de Máscara, 4 Fragmentos de Máscara cria uma nova máscara de vida,e o Cavaleiro pode ficar com 9 máscaras.</p>
+                    <p> Fragmentos de Receptáculo(Alma): Alma é usada para conjurar magias e curar a vida do Cavaleiro, coletar três fragmentos de Receptáculo aumenta o máximo de alma que pode ser acumulada.</p> 
+                    
+                    <p style="color: white; font-weight: bold;">Magias</p>
+                    <p> Magias são habilidades que o Cavaleiro pode usar usando a alma que consegue ao matar inimigos, as magias podem ser melhoradas.</p> 
+                        <p>Espírito Vingativo ——> Alma Sombria</p>
+                        <p>Mergulho Desolado ——> Escuridão Descendente</p>
+                        <p>Espectros Uivantes ——> Grito do Abismo</p>
+                    <p>Foco: Foque a ALMA coletada para reparar sua carapaça e curar dano</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Focus_inventory.webp" style="width: 250px; height:250px;"></div>
+                    <p> Espírito Vingativo: Conjure um espírito que voará para frente e queimará os inimigos em seu caminho</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Vengeful_Spirit_Icon.webp" style="width: 230px; height:144px;"></div>
+                    <p> Alma Sombria: Conjure uma sombra que voará para frente e queimará inimigos em seu caminho.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Icon_HK_Shade_Soul.webp" style="width: 230px; height:144px;"></div>
+                    <p> Mergulho Desolado: Golpeie o solo com uma força concentrada de ALMA.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Desolate_Dive_Icon.webp" style="width: 186px; height:178px;"></div>
+                    <p>Escuridão Descendente: Golpeie o solo com uma força concentrada de ALMA e Sombra.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Descending_Dark_Icon.webp" style="width: 186px; height:178px;"></div>
+                    <p>Espectros Uivantes: Destrua inimigos com ALMA gritante.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Howling_Wraiths_Icon.webp" style="width: 166px; height:248px;"></div>
+                    <p>Grito do Abismo: Destrua inimigos com ALMA e Sombra gritantes.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Magias/Abyss_Shriek_Icon.webp" style="width: 166px; height:248px;"></div>
+                    `},
+                    
+            'hk-ferrao': {
+                title: 'Ferrão',
+                content: `
+                <p> O ferrão é a arma usada pelo cavaleiro, inimigos, NPCs, e chefes em Hallownest o ferrão pode ser melhorado usando minério pálido 4 vezes. </p>
+                <p> Aprimoramentos do Ferrão </p>
+                
+                <p> Ferrão Velho: Uma arma tradicional de Hallownest. Sua lâmina está cega devido ao tempo e ao desgaste.</p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Old_Nail.webp" alt="Ferrão Velho" style="width: 60px; height:150px;">
+                </div>
+                
+                <p> Ferrão Afiado: Uma arma tradicional de Hallownest, restaurada a uma forma letal. </p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Sharpened_Nail.webp" alt="Ferrão Afiado" style="width: 60px; height:150px;">
+                
+                <p> Ferrão Canalizado: Uma arma fendida em Hallownest. A lâmina é primorosamente balanceada. </p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Channelled_Nail.webp" alt="Ferrão Canalizado" style="width: 60px; height:150px;">
+                </div>
+                
+                <p> Ferrão Serpenteado: Uma poderosa arma de Hallownest, refinada como nenhuma outra. </p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Coiled_Nail.webp" alt="Ferrão Serpenteado" style="width: 60px; height:150px;">
+                </div>
+                
+                <p> Ferrão Puro: A arma definitiva de Hallownest. Trabalhada à perfeição, esse ferrão antigo revela sua verdadeira forma. </p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Pure_Nail.png" alt="Ferrão Puro" style="width: 60px; height:150px;">
+                </div>
+                
+                <p>Artes do Ferrão</p>
+                <p> AS Artes do Ferrão são abilidades ensinadas ao cavaleiro pelos mestres do Ferrão, as artes do ferão vão depender de quanto dano a ferrão do Cavaleiro dá.</p>
+                <p> O amuleto Gloria do mestre do ferão irá reduzir o tempo de carga das artes do ferão.</p>
+                
+                <p>Corte Ciclone</p>
+                <p>Um ataque giratório que atinge os inimigos por todos os lados.</p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Cyclone_Slash_Artwork.png" alt="Ferrão Puro" style="width: 750px; height:288px;">
+                </div>
+                <p>Grande Corte</p>
+                <p>Libera um enorme corte para frente que causa dano extra aos inimigos.</p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Great_Slash_Artwork.png" alt="Ferrão Puro" style="width: 621px; height:480px;">
+                </div>
+                <p>Corte Impusionado</p>
+                <p>Ataque para frente rapidamente após esquivar.</p>
+                <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Dash_Slash_Artwork.png" alt="Ferrão Puro" style="width: 850px; height:332px;">
+                </div>`},
+
+            'hk-Abilidades': {
+                title: 'Abilidades e Magias',
+                content: `
+                    <p>Manto de Asa de Mariposa: Permite que o jogador dê uma esquiva para frente, no solo ou no ar.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img-pins/Mothwing_Cloak_Icon.webp" alt="Manto de Asa de Mariposa" style="width: 150px; height:150px;">
+                </div>
+                    <p>Garra do Louva-a-Deus: Permite que o jogador se agarre em paredes e pule delas.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Icon_HK_Mantis_Claw.webp" alt="Ferrão Velho" style="width: 150px; height:150px;">
+                </div>
+                    <p>Coração de Cristal: A energia do cristal pode ser canalizada para lançar o seu portador para frente com muita velocidade.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Crystal_Heart_Icon.webp" alt="Ferrão Velho" style="width: 150px; height:150px;">
+                </div>
+                    <p>Asas do Monarca: Permite que  jogador salte uma segunda vez no ar.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Monarch_Wings_Icon.webp" alt="Ferrão Velho" style="width: 150px; height:150px;">
+                </div>
+                    <p>Lágrima de Isma: Fornece proteção contra as piscinas abrasivas e ácidas encontradas em algumas partes de Hallownest.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Ismas_Tear.webp" alt="Ferrão Velho" style="width: 150px; height:150px;">
+                </div>
+                    <p>Manto Sombrio: Permite que seu jogador esquive por dentro de inimigos e seus ataques sem levar dano.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Shade_Cloak_Icon.webp" style="width: 150px; height:150px;">
+                </div>
+                    <p>Ferrão dos Sonhos:  O Ferrão dos Sonhos pode coletar Essência, remanescentes de desejos e sonhos, se o jogador usar o ferrão dos sonhos em um NPC pode ler alguns dos seus pensamentos, e se for usado em alguns chefes já derrotado o jogador pode enfrentar uma versão mais forte desses chefes.</p>
+                    <div style="text-align: Left; margin: 1.5rem 0;">
+                    <img src="img/Habilidades/Icon_HK_Dream_Nail.webp" alt="Ferrão Velho" style="width: 125px; height:200px;">
+                </div>`},
+
+            'ss-sobre': {
+                title: 'Sobre Silksong',
+                content: `
+                     <p>Hollow Knight: Silksong é a continuação do primeiro jogo, um jogo indie de gênero metroidvania desenvolvido e publicado pela Team Cherry, o jogo está desponivel em todas as plataformas, em hollow knight os jogador controla a Hornet, o jogador vai Subir ao pico de um antigo reino assombrado para descobrir o motivo de Hornet ter sido Capturado e levado para uma terra distante.</p>`},
+
+            'ss-historia': {
+                title: 'História',
+                content: `
+                    <p>Muito antes de Hornet chegar a Pharloom, o reino era composto por tribos independentes que viviam em relativa paz, como os guerreiros de Karak e os xamãs de Moss Grotto. Esse equilíbrio foi quebrado pela chegada da Grande Mãe Seda, um Ser Pálido de imenso poder que subjugou esses povos, transformando regiões vibrantes em lugares corrompidos e erguendo a imensa Cidadela Brilhante para governar com mão de ferro.</p>
+                    <p>Para consolidar seu domínio, a Grande Mãe Seda criou as Tecelãs, seres divinos que controlavam a seda através da música. No entanto, as próprias Tecelãs acabaram se rebelando contra sua criadora, colocando-a em um sono profundo e instaurando uma religião de cânticos para que o reino inteiro, sem saber, mantivesse a deusa dormindo. Percebendo que esse selo era frágil, as Tecelãs fugiram para Hallownest, onde Herrah, a Besta, deu origem a Hornet após se unir ao Rei Pálido.</p>
+                    <p>No presente, com o enfraquecimento desse pacto antigo, a Grande Mãe Seda está despertando e consumindo a mente dos habitantes de Pharloom. Para garantir seu retorno total, ela ordenou a caça aos descendentes das Tecelãs por todo o mundo.</p>
+                    <p>Ao ser trazida em uma gaiola selada por selos antigos, Hornet é jogada no ponto mais baixo do reino para que sua subida sirva como uma espécie de "peregrinação forçada". A ideia da Cidadela é que ela enfrente as provas musicais e os exércitos de seda para provar seu valor ou ser finalmente absorvida pela mente coletiva que a GMS está tecendo. Cada passo que ela dá em direção ao topo não é apenas uma fuga, mas um confronto direto com o legado de traição de suas ancestrais, as Tecelãs, que abandonaram o reino sob uma mentira para protegê-la.</p>
+                    <p>Nessa jornada, Hornet deixa de ser apenas uma protetora de Hallownest para se tornar a chave que pode ou estabilizar a canção de ninar eterna ou destruir de vez o trono da Grande Mãe Seda, decidindo se Pharloom continuará sendo um reino de servos musicais ou se finalmente se libertará de sua criadora.</p>
+                        `},
+
+            'ss-amuletos': {
+                title: 'Ferramentas',
+                content: `
+                    <p>As ferramentas substituem os amuletos do primeiro jogo, sendo divididas por cores em 3 tipos: ferramentas vermelhas (Ataque), amarelas (Exploração) e azuis (Defesa).</p>
+ 
+                    <!-- Ferramentas de Ataque -->
+                    <div class="amuleto-categoria">
+                      <button class="amuleto-categoria-btn" id="btn-ferr-ataque" onclick="toggleCategoria('ferr-ataque')">
+                        ⚔️ Ferramentas de Ataque (Vermelhas) <span class="seta">▼</span>
+                      </button>
+                      <div class="amuleto-categoria-conteudo" id="cat-ferr-ataque">
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Pino Tríplice.png" alt="Pino Tríplice">
+                      <p>Pino Tríplice: Arma leve e composta criada para ser arremessada em conjunto, disparando três agulhas em leque num ângulo de 45 graus.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Mosca Mecânica.png" alt="Mosca Mecânica">
+                      <p>Mosca Mecânica: Mascote mecânico alado que procura inimigos próximos e os ataca.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Roda Mecânica.png" alt="Roda Mecânica">
+                      <p>Roda Mecânica: Lâmina circular expansiva alimentada por um motor mecânico. Propulsiona-se para frente, fatiando os inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Corta-concha.png" alt="Corta-concha">
+                      <p>Corta-concha: Arma em espiral criada a partir de uma concha-pináculo endurecida. Se atirada em ângulo, pode ricochetear e atingir presas desprevenidas.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Curvagarra.png" alt="Curvagarra">
+                      <p>Curvagarra: Osso curvado usado por caçadores para abater presas voadoras.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Broca do Cavador.png" alt="Broca do Cavador">
+                      <p>Broca do Cavador: A Hornet mergulha para baixo em forma de broca, causando grande dano aos inimigos no caminho.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Cerveja de Pulga.png" alt="Cerveja de Pulga">
+                      <p>Cerveja de Pulga: Ao beber a Cerveja de Pulga, a velocidade de ataque da Hornet aumenta temporariamente. Reabastece automaticamente ao descansar num banco.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Placa Ígnea.png" alt="Placa Ígnea">
+                      <p>Placa Ígnea: Aquece a agulha da Hornet, adicionando dano de fogo aos ataques corpo a corpo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Pinolongo.png" alt="Pinolongo">
+                      <p>Pinolongo: A Hornet arremessa uma lança comprida à frente numa trajetória baixa e longa, perfurando inimigos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Almofapino.png" alt="Almofapino">
+                      <p>Almofapino: Uma almofada explosiva cheia de espinhos; ao ser atingida ou tocada por inimigos, explode causando dano em área.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Frasco de Plásmio.png" alt="Frasco de Plásmio">
+                      <p>Frasco de Plásmio: A Hornet apunhala-se e aumenta temporariamente o seu máximo de vida. Após 20 utilizações, é necessário reabastecer.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Canhão de Rosários.png" alt="Canhão de Rosários">
+                      <p>Canhão de Rosários: Dispara Rosários como uma metralhadora. Pode ser recarregado num banco através do ecrã de equipamento.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Tiro de Seda.png" alt="Tiro de Seda">
+                      <p>Tiro de Seda: Dispara projéteis de seda com potências diferentes consoante a forma como foi reparado: rajadas pesadas, disparos rápidos ou um poderoso laser de seda.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Fragmento de Ferrão.png" alt="Fragmento de Ferrão">
+                      <p>Fragmento de Ferrão: Lança uma bola espinhosa no ar que se expande e causa dano em área durante alguns instantes.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Tachinhas.png" alt="Tachinhas">
+                      <p>Tachinhas: A Hornet lança pregos no chão à sua frente, que danificam os inimigos que pisarem neles.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Anel de Arremesso.png" alt="Anel de Arremesso">
+                      <p>Anel de Arremesso: Chakrams que a Hornet arremessa em linha reta, causando dano a todos os inimigos que atravessar.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/vermelho/Orbevolts.png" alt="Orbevolts">
+                      <p>Orbevolts: A Hornet lança orbes carregados de eletricidade que chocam os inimigos ao contacto.</p>
+                    </div>
+                      </div>
+                    </div>
+ 
+                    <!-- Ferramentas de Exploração -->
+                    <div class="amuleto-categoria">
+                      <button class="amuleto-categoria-btn" id="btn-ferr-exploracao" onclick="toggleCategoria('ferr-exploracao')">
+                        🗺️ Ferramentas de Exploração (Amarelas) <span class="seta">▼</span>
+                      </button>
+                      <div class="amuleto-categoria-conteudo" id="cat-ferr-exploracao">
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Compass.png" alt="Bússola">
+                      <p>Bússola: Dispositivo complexo de rastreamento, esculpido numa carapaça. Quando equipado, mostra a localização do portador no mapa.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Barbed_Bracelet.png" alt="Bracelete Farpado">
+                      <p>Bracelete Farpado: Bracelete perigoso usado por quem não se importa de ser mais vulnerável. Aumenta o dano recebido, mas também aumenta o dano causado pela agulha.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Ascendant's_Grip.png" alt="Empunhadura de Subida">
+                      <p>Empunhadura de Subida: Pitão dourado que permite manter-se no lugar enquanto sobe numa parede.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Dead_Bug's_Purse.png" alt="Bolsa do Inseto Morto">
+                      <p>Bolsa do Inseto Morto: Bolsa descartada de um peregrino abatido. Permite que o portador mantenha alguns rosários ao ser derrotado.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Magnetite_Dice.png" alt="Broche de Magnetita">
+                      <p>Broche de Magnetita: Pedra sagrada com uma prece gravada para rosários. As contas soltas serão atraídas em direção ao portador.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Magnetite_Dice.png" alt="Dados de Magnetita">
+                      <p>Dados de Magnetita: Brinquedos entalhados de material magnético. Usados em jogos simples; acredita-se que trazem sorte ao portador.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Scuttlebrace.png" alt="Braçaranha">
+                      <p>Braçaranha: Espinha artificial presa firmemente ao redor da carapaça. Aumenta a flexibilidade inata do portador, permitindo uma fuga rápida.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Shard_Pendant.png" alt="Pingente de Fragmento">
+                      <p>Pingente de Fragmento: Bugiganga rústica usada por coletores e fabricantes. Permite coletar mais fragmentos de carapaças de criaturas derrotadas.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Silkspeed_Anklets.png" alt="Tornozeleiras Sedavelozes">
+                      <p>Tornozeleiras Sedavelozes: Tornozeleiras experimentais fabricadas por Tecelãs. Usam a própria Seda do portador para aumentar a velocidade de corrida.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Spider_Strings.png" alt="Cordões de Aranha">
+                      <p>Cordões de Aranha: Dispositivo sofisticado de Tecelã. Ressoa com a música tocada para amplificar e aprimorar uma performance. Expande e fortalece os efeitos do Agulino.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Thief's_Mark.png" alt="Marca do Ladrão">
+                      <p>Marca do Ladrão: Símbolo usado para se identificar entre companheiros ladrões. Ganha rosários extras de inimigos derrotados, mas perde alguns rosários ao sofrer dano.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/amarelo/Weighted_Belt.png" alt="Cinto Pesado">
+                      <p>Cinto Pesado: Cinta pesada preferida por aqueles com um passo instável. O portador recuará menos ao atingir os inimigos e não será arremessado tão longe quando sofrer dano.</p>
+                    </div>
+                      </div>
+                    </div>
+ 
+                    <!-- Ferramentas de Defesa -->
+                    <div class="amuleto-categoria">
+                      <button class="amuleto-categoria-btn" id="btn-ferr-defesa" onclick="toggleCategoria('ferr-defesa')">
+                        🛡️ Ferramentas de Defesa (Azuis) <span class="seta">▼</span>
+                      </button>
+                      <div class="amuleto-categoria-conteudo" id="cat-ferr-defesa">
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Claw_Mirror.png" alt="Espelho de Garra">
+                      <p>Espelho de Garra: Enquanto vincula, emite um lampejo ofuscante que causa dano a inimigos próximos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Druid's_Eye.png" alt="Olho do Druida">
+                      <p>Olho do Druida: Ao ser atingida, a Hornet produz um líquido verde que permite recuperar alguma Seda perdida. Pode ser melhorado para Olhos do Druida com efeito mais poderoso.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Egg_of_Flealia.png" alt="Ovo de Pulgalia">
+                      <p>Ovo de Pulgalia: Com vida cheia, as Habilidades de Seda da Hornet consomem menos Seda ao ser utilizadas.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Fractured_Mask.png" alt="Máscara Fraturada">
+                      <p>Máscara Fraturada: Aumenta a resistência da Hornet, criando uma proteção adicional ao ser atingida. Útil para aumentar a sobrevivência em combates difíceis.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Injector_Band.png" alt="Conjunto Injetor">
+                      <p>Conjunto Injetor: Aumenta a velocidade de vinculação/cura da Hornet, permitindo recuperar vida mais rapidamente.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Longclaw.png" alt="Garralonga">
+                      <p>Garralonga: Estende o comprimento da agulha da Hornet, permitindo atingir inimigos a maior distância.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Sino de magma.png" alt="Sino de Magma">
+                      <p>Sino de Magma: Reduz o dano sofrido pela Hornet ao entrar em contacto com lava, útil nas áreas com magma.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Memory_Crystal.png" alt="Cristal da Memória">
+                      <p>Cristal da Memória: Quando atingida, o cristal cria uma cópia da Hornet e fragmenta-se em espinhos, causando dano ao inimigo.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Pin_Badge.png" alt="Emblema de Pino">
+                      <p>Emblema de Pino: Reduz o tempo necessário para carregar o Golpe da Agulha da Hornet.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Pollip_Pouch.png" alt="Bolsa de Pólipo">
+                      <p>Bolsa de Pólipo: Aplica veneno a todas as ferramentas equipadas da Hornet, tornando-as extremamente letais.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Quick_Sling.png" alt="Sela Rápida">
+                      <p>Sela Rápida: Ao descansar num banco, fica disponível uma cura de reserva adicional para situações de emergência.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Reserve_Bind.png" alt="Vínculo Reserva">
+                      <p>Vínculo Reserva: Reserva uma cura extra para quando a Seda estiver esgotada; recarrega ao descansar num banco.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Sawtooth_Circlet.png" alt="Bainha Serrilhada">
+                      <p>Bainha Serrilhada: Quando a Hornet usa o Manto Drifter ou o Manto Faydown, uma lâmina giratória surge brevemente à sua volta, causando dano aos inimigos próximos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Spool_Extender.png" alt="Extensor de Carretel">
+                      <p>Extensor de Carretel: Aumenta a quantidade máxima de Seda que a Hornet pode acumular de cada vez.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Volt_Filament.png" alt="Filamento Voltáico">
+                      <p>Filamento Voltáico: Adiciona dano elétrico às Habilidades de Seda da Hornet.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Warding_Bell.png" alt="Sino Protetor">
+                      <p>Sino Protetor: Impede a Hornet de sofrer dano adicional enquanto está a curar, repelindo os inimigos durante o processo, uma vez por encontro.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Weavelight.png" alt="Teceleve">
+                      <p>Teceleve: Com este equipamento, a Seda da Hornet regenera muito mais rapidamente após ser gasta.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Wispfire_Lantern.png" alt="Lanterna de Lumefogo">
+                      <p>Lanterna de Lumefogo: Wisps de fogo formam-se à volta da Hornet, consumindo Seda mas causando dano contínuo aos inimigos próximos.</p>
+                    </div>
+                    <div class="amuleto-item">
+                      <img src="img/Silksong/Ferramentas/azul/Wreath_of_Purity.png" alt="Guirlanda de Pureza">
+                      <p>Guirlanda de Pureza: Protege a Hornet contra a aflição que drena a Seda durante um período de tempo limitado.</p>
+                    </div>
+                      </div>
+                    </div>
+                `
+            },
+            'ss-vida': {
+                title: 'Vida / Seda',
+                content: `
+                    <p style="color:white;font-weight:bold;">Vida e Seda</p>
+                    <p>Fragmentos de Máscara (vida): estes fragmentos são usados para aumentar a vida do personagem, a vida é representada por máscaras. O Cavaleiro começa o jogo com 5 máscaras, e pode obter mais coletando Fragmentos de Máscara. 4 Fragmentos de Máscara fazem uma nova máscara de vida, até um máximo de 9 máscaras.</p>
+                    <div style="display:flex;gap:1rem;align-items:center;margin:1rem 0;">
+                      <div><img src="img/Silksong/Vida Seda/SS_Ancient_Mask.png" alt="Máscara Completa" style="width:185px;height:292px;"><p>Máscara Completa</p></div>
+                    </div>
+                    <p>Seda: A Seda é usada para conjurar as habilidades da Hornet. A Hornet usa a seda para curar três máscaras de uma só vez quase instantaneamente.</p>
+                    <div style="margin:1rem 0;">
+                      <img src="img/Silksong/Vida Seda/Icon_SS_Spell_Core.png" alt="Seda" style="width:180px;height:170px;">
+                      <p>Seda</p>
+                    </div>
+ 
+                    <p style="color:white;font-weight:bold;">Brasões</p>
+                    <p>Os brasões alteram os ataques da Hornet com a Agulha, e também permitem à Hornet equipar ferramentas. Para aumentar o espaço de ferramentas do brasão é preciso de Medalhão Memorial.</p>
+                    <div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Hunter_Crest.png" alt="Brasão do Caçador" style="width:427px;height:430px;"><p>Espreite a presa e ataque com golpes letais.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Reaper_Crest.png" alt="Brasão do Ceifador" style="width:579px;height:463px;"><p><strong>Ceifador</strong><br><span style="color:#aaa;font-size:0.78rem;">Ataque com golpes pesados e curvos, e colha seda adicional dos inimigos.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Wanderer_Crest.png" alt="Brasão do Viajante" style="width:430px;height:604px;"><p><strong>Viajante</strong><br><span style="color:#aaa;font-size:0.78rem;">Corte de maneira ágil e rápida com golpes curtos e precisos.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Beast_Crest.png" alt="Brasão da Besta" style="width:521px;height:488px;"><p><strong>Besta</strong><br><span style="color:#aaa;font-size:0.78rem;">Rasque inimigos com golpes violentos. Vincule para entrar em fúria selvagem e roubar vida da presa.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Architect_Crest.png" alt="Brasão do Arquiteto" style="width:300px;height:328px;"><p><strong>Arquiteto</strong><br><span style="color:#aaa;font-size:0.78rem;">Gire a agulha como um parafuso, rasgando os inimigos. Use seda para fabricar rapidamente novas ferramentas.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/300px-Witch_Crest.png" alt="Brasão da Bruxa" style="width:300px;height:317px;"><p><strong>Bruxa</strong><br><span style="color:#aaa;font-size:0.78rem;">Agite a agulha em golpes amplos. Sugue a vida dos inimigos através de raízes retorcidas.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Crests/Shaman_Crest.png" alt="Brasão do Xamã" style="width:300px;height:310px;"><p><strong>Xamã</strong><br><span style="color:#aaa;font-size:0.78rem;">Lance a lâmina para a frente e empodere habilidades de seda com runas poderosas.</span></p></div>
+                    </div>
+                `
+            },
+            'ss-ferrao': {
+                title: 'Agulha',
+                content: `
+                    <p>A agulha é a arma usada pela Hornet, inimigos, NPCs, e chefes em Hallownest. A agulha pode ser melhorada usando óleo pálido.</p>
+                    <p style="color:white;font-weight:bold;">Aprimoramentos da Agulha</p>
+ 
+                    <div style="display:grid;gap:1rem;margin:1rem 0;">
+                      <div style="display:flex;align-items:center;gap:1rem;padding:0.75rem;background:#1a1a2a;border-radius:8px;border:1px solid #333;">
+                        <img src="img/Silksong/Agulha/Agulha.png" alt="Agulha" style="width:80px;height:600px;flex-shrink:0;">
+                        <div><p><strong>Agulha</strong></p><p style="color:#aaa;font-size:0.9rem;">Ferramenta de costura longa, balanceada exclusivamente para combate. A lâmina é marcada pelo tempo e uso.</p><p style="color:#f472b6;font-size:0.85rem;">Dano: 5</p></div>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:1rem;padding:0.75rem;background:#1a1a2a;border-radius:8px;border:1px solid #333;">
+                        <img src="img/Silksong/Agulha/Agulha Afiada.png" alt="Agulha Afiada" style="width:80px;height:600px;flex-shrink:0;">
+                        <div><p><strong>Agulha Afiada</strong></p><p style="color:#aaa;font-size:0.9rem;">Ferramenta de costura longa, balanceada exclusivamente para combate. A lâmina é afiada até uma borda fina.</p><p style="color:#f472b6;font-size:0.85rem;">Custo: Grátis &nbsp;|&nbsp; Dano: 9</p></div>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:1rem;padding:0.75rem;background:#1a1a2a;border-radius:8px;border:1px solid #333;">
+                        <img src="img/Silksong/Agulha/Agulha Brilhante.png" alt="Agulha Brilhante" style="width:80px;height:600px;flex-shrink:0;">
+                        <div><p><strong>Agulha Brilhante</strong></p><p style="color:#aaa;font-size:0.9rem;">Ferramenta de costura longa, balanceada exclusivamente para combate. A lâmina brilha mais do que nunca.</p><p style="color:#f472b6;font-size:0.85rem;">Custo: 1 Óleo Pálido &nbsp;|&nbsp; Dano: 13</p></div>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:1rem;padding:0.75rem;background:#1a1a2a;border-radius:8px;border:1px solid #333;">
+                        <img src="img/Silksong/Agulha/Agulha Favônio.png" alt="Agulha Favônio" style="width:80px;height:600px;flex-shrink:0;">
+                        <div><p><strong>Agulha Favônio</strong></p><p style="color:#aaa;font-size:0.9rem;">Ferramenta de costura longa, balanceada exclusivamente para combate. A lâmina altamente refinada revela suas faixas hivesteel.</p><p style="color:#f472b6;font-size:0.85rem;">Custo: 450 Rosários + 1 Óleo Pálido &nbsp;|&nbsp; Dano: 17</p></div>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:1rem;padding:0.75rem;background:#1a1a2a;border-radius:8px;border:1px solid #333;">
+                        <img src="img/Silksong/Agulha/Agulha Aço Pálido.png" alt="Agulha Aço Pálido" style="width:80px;height:600px;flex-shrink:0;">
+                        <div><p><strong>Agulha Aço Pálido</strong></p><p style="color:#aaa;font-size:0.9rem;">Ferramenta de costura longa, balanceada exclusivamente para combate. A lâmina Hivesteel foi afiada até sua forma final.</p><p style="color:#f472b6;font-size:0.85rem;">Custo: 680 Rosários + 1 Óleo Pálido &nbsp;|&nbsp; Dano: 21</p></div>
+                      </div>
+                    </div>
+ 
+                    <p style="color:white;font-weight:bold;">Equipamento</p>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin:1rem 0;">
+                      <div style="text-align:center;"><img src="img/Silksong/Equipamento/Capa de Drifter.png" alt="Capa de Drifter" style="width:100px;height:100px;"><p style="font-size:0.85rem;margin-top:0.4rem;"><strong>Capa de Drifter</strong><br><span style="color:#aaa;font-size:0.78rem;">Permite à Hornet subir correntes de ar e planar no ar.</span></p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Equipamento/Manto de plumídio.png" alt="Manto Faydown" style="width:100px;height:100px;"><p style="font-size:0.85rem;margin-top:0.4rem;"><strong>Manto de Plumídio</strong><br><span style="color:#aaa;font-size:0.78rem;">Concede à Hornet um salto adicional no ar e resistência às temperaturas congelantes de Monte Fay.</span></p></div>
+                    </div>
+                `
+            },
+            'ss-Abilidades': {
+                title: 'Habilidades',
+                content: `
+                    <p style="color:white;font-weight:bold;">Habilidades</p>
+                    <div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Lança de Seda.png" alt="Lança de Seda" style="width:529px;height:369px;"><p>Lança de Seda: Arremesse a agulha com força intensificada pela seda tensionada.</p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Turbilhão de Fios.png" alt="Turbilhão de Fios" style="width:300px;height:286px;"><p>Turbilhão de Fios: Ataque criando uma tempestade de fios ao seu redor.</p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Ponto Cruz.png" alt="Ponto Cruz" style="width:299px;height:273px;"><p>Ponto Cruz: Vincule seda ao redor da agulha para desviar de ataques inimigos e contra-atacar instantaneamente.</p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Dardo Afiado.png" alt="Dardo Afiado" style="width:300px;height:297px;"><p>Dardo Afiado: Perfure os inimigos num turbilhão de lâminas e seda.</p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Fúria de Runas.png" alt="Fúria de Runas" style="width:300px;height:259px;"><p>Fúria de Runas: Teça runas de seda ardente nos inimigos.</p></div>
+                      <div style="text-align:center;"><img src="img/Silksong/Habilidades/Ferrões Pálidos.png" alt="Ferrões Pálidos" style="width:300px;height:331px;"><p>Ferrões Pálidos: Gire criando garras letais que perfurarão os inimigos.</p></div>
+                    </div>
+ 
+                    <p style="color:white;font-weight:bold;">Arte Ancestral</p>
+                    <div>
+                      <div style="text-align:center;"><img src="img/ss/118.webp" alt="Garra de Seda" style="width:100px;height:100px;"><p>Garra de Seda: Arremesse a agulha entrelaçada em Seda como um arpão e projete-se até o alvo.</p></div>
+                      <div style="text-align:center;"><img src="img/ss/119.webp" alt="Garra Aderente" style="width:100px;height:100px;"><p>Garra Aderente: Agarre-se a superfícies íngremes e salte para escalar alturas rapidamente.</p></div>
+                      <div style="text-align:center;"><img src="img/ss/120.webp" alt="Agulino" style="width:100px;height:100px;"><p>Agulino: Toque melodias ancestrais ao entrelaçar Seda ao longo da agulha.</p></div>
+                      <div style="text-align:center;"><img src="img/ss/121.webp" alt="Impulso de Seda" style="width:100px;height:100px;"><p>Impulso de Seda: Arremesse a agulha para cima e projete-se a alturas impressionantes.</p></div>
+                      <div style="text-align:center;"><img src="img/ss/122.webp" alt="Passo Veloz" style="width:100px;height:100px;"><p>Passo Veloz: Avance num impulso e corra com velocidade sobrenatural, como se deslizasse sobre Seda.</p></div>
+                    </div>
+                `
+            }
+        };
+
+        function showMain() {
+            document.getElementById('main-screen').classList.remove('hidden');
+            document.getElementById('hollow-knight-section').classList.remove('active');
+            document.getElementById('silksong-section').classList.remove('active');
+            document.getElementById('pap-project-section').classList.remove('active');
+            // Hide content areas
+            document.getElementById('hk-content').classList.remove('active');
+            document.getElementById('ss-content').classList.remove('active');
+            document.getElementById('ss-content').classList.remove('active');
+          }
+ 
+        function showGame(game) {
+            document.getElementById('main-screen').classList.add('hidden');
+            
+            if (game === 'hollow-knight') {
+                document.getElementById('hollow-knight-section').classList.add('active');
+                document.getElementById('hk-content').classList.remove('active');
+            } else if (game === 'silksong') {
+                document.getElementById('silksong-section').classList.add('active');
+                document.getElementById('ss-content').classList.remove('active');
+            } else if (game === 'pap-project') {
+                document.getElementById('pap-project-section').classList.add('active');
+            }
+        }
+ 
+ 
+        function toggleCategoria(id) {
+            var btn = document.getElementById('btn-' + id);
+            var conteudo = document.getElementById('cat-' + id);
+            if (btn) btn.classList.toggle('aberto');
+            if (conteudo) conteudo.classList.toggle('aberto');
+        }
+        function showContent(contentId) {
+            const data = contentData[contentId];
+            if (!data) return;
+ 
+            const isHK = contentId.startsWith('hk-');
+            const contentDiv = isHK ? document.getElementById('hk-content') : document.getElementById('ss-content');
+            
+            contentDiv.innerHTML = `
+                <h2>${data.title}</h2>
+                <div class="content-text">
+                    ${data.content}
+                </div>
+                <button class="close-btn" onclick="closeContent('${isHK ? 'hk' : 'ss'}')">Fechar</button>
+            `;
+            
+            contentDiv.classList.add('active');
+            contentDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+ 
+        function closeContent(game) {
+            if (game === 'hk') {
+                document.getElementById('hk-content').classList.remove('active');
+            } else {
+                document.getElementById('ss-content').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
