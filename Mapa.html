@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GameMaps Scan</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="popup_styles.css">
 </head>
 
 <body>
@@ -18,8 +19,7 @@
 <div class="side-panel hidden" id="sidePanel">
     <div class="panel-header">Mapa Interativo</div>
     
-    <!-- Mapa 1: Hollow Knight -->
-    <div id="map1-panel">
+<div id="map1-panel">
         <div class="category-section">
             <div class="category-title">Pontos de Interesse</div>
             <div class="items-grid">
@@ -27,21 +27,24 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Bench.png');"></div>
                     <div class="map-item-name">Banco</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('transport_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Stag.webp');"></div>
                     <div class="map-item-name">Transporte</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('Springs_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Springs.webp');"></div>
                     <div class="map-item-name">Springs</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('shop_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Token_Marker.webp');"></div>
                     <div class="map-item-name">Loja</div>
                 </div>
             </div>
         </div>
-
+ 
         <div class="category-section">
             <div class="category-title">Recursos</div>
             <div class="items-grid">
@@ -49,21 +52,24 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Vessel_Fragment.webp');"></div>
                     <div class="map-item-name">Alma</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('mask_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Health_Piece.webp');"></div>
                     <div class="map-item-name">Máscara</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('palore_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Pale_Ore.webp');"></div>
                     <div class="map-item-name">Minério Pálido</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('vital_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Cocoon.webp');"></div>
                     <div class="map-item-name">Sangue Vital</div>
                 </div>
             </div>
         </div>
-
+ 
         <div class="category-section">
             <div class="category-title">Combate & Habilidades</div>
             <div class="items-grid">
@@ -71,24 +77,29 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Grimm_Troupe.webp');"></div>
                     <div class="map-item-name">Chefes</div>
                 </div>
-                <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Warriors_Grave.webp');"></div>
+ 
+                <div class="map-item" onclick="toggleLayer('Warriors_Grave_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Warriors_Grave.webp');"></div>
                     <div class="map-item-name">Espíritos</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('charm_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('Amuletos/Alma do Rei.webp');"></div>
                     <div class="map-item-name">Amuletos</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('ability_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img/Habilidades/Monarch_Wings_Icon.webp');"></div>
                     <div class="map-item-name">Habilidades</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('nail_art_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Cyclone_Slash.webp');"></div>
                     <div class="map-item-name">Artes do Ferrão</div>
                 </div>
             </div>
         </div>
-
+ 
         <div class="category-section">
             <div class="category-title">Itens</div>
             <div class="items-grid">
@@ -96,18 +107,20 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Elegant_Key.webp');"></div>
                     <div class="map-item-name">Chaves</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('relic_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Arcane_Egg.webp');"></div>
                     <div class="map-item-name">Relíquias</div>
                 </div>
+ 
                 <div class="map-item" onclick="toggleLayer('grub_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Map_Pin_Grub.webp');"></div>
-                    <div class="map-item-name">Larva</div>
+                    <div class="map-item-name">Grubs</div>
                 </div>
             </div>
         </div>
     </div>
-
+ 
     <!-- Mapa 2: Silksong -->
     <div id="map2-panel" style="display: none;">
         <div class="category-section">
@@ -117,10 +130,12 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/red-tools.png');"></div>
                     <div class="map-item-name">Ferramentas (Vermelhas)</div>
                 </div>
+
                 <div class="map-item" onclick="toggleLayer('ss_blue_tool_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/blue-tools.png');"></div>
                     <div class="map-item-name">Ferramentas (Azul)</div>
                 </div>
+
                 <div class="map-item" onclick="toggleLayer('ss_yellow_tool_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/yellow-tools.png');"></div>
                     <div class="map-item-name">Ferramentas (Amarelo)</div>
@@ -135,6 +150,7 @@
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/skills.png');"></div>
                     <div class="map-item-name">Abilidades</div>
                 </div>
+
                 <div class="map-item" onclick="toggleLayer('ss_crest_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/crests.png');"></div>
                     <div class="map-item-name">Brasões</div>
@@ -143,21 +159,28 @@
         </div>
 
         <div class="category-section">
-            <div class="category-title">Pontos de Interesse</div>
+            <div class="category-title">Pontos de Interesse & Chefes</div>
             <div class="items-grid">
                 <div class="map-item" onclick="toggleLayer('ss_bell_way_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Pins-Silksong/via-bell.png');"></div>
                     <div class="map-item-name">Vias Campanárias</div>
                 </div>
+            </div>
+
                 <div class="map-item" onclick="toggleLayer('ss_shop_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Token_Marker.webp');"></div>
                     <div class="map-item-name">Lojas</div>
                 </div>
+
+                <div class="map-item" onclick="toggleLayer('ss_boss_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('img-pins/Grimm_Troupe.webp');"></div>
+                    <div class="map-item-name">Boss</div>
+                </div>
+
                 <div class="map-item" onclick="toggleLayer('ss_bench_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('img-pins/Bench.png');"></div>
                     <div class="map-item-name">Bancos</div>
                 </div>
-            </div>
         </div>
 
         <div class="category-section">
@@ -168,35 +191,26 @@
             <div class="map-item-name">Máscara</div>
         </div>
 
-        <div class="map-item" onclick="toggleLayer('ss_spool_fragment_Layer', this)">
-            <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Spool_Fragment.png');"></div>
-            <div class="map-item-name">Fragmento de Carretel</div>
-        </div>
-                </div>
-            <div class="map-item" onclick="toggleLayer('ss_memory_locket_Layer', this)">
+        <div class="map-item" onclick="toggleLayer('ss_memory_locket_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Memory_Locket.png');"></div>
-                    <div class="map-item-name">Medalhões Memoriais</div>
+                    <div class="map-item-name">Memory Locket</div>
+                </div>
+            </div>
+        </div>
+
+         <div class="map-item" onclick="toggleLayer('ss_spool_fragment_Layer', this)">
+                    <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Spool_Fragment.png');"></div>
+                    <div class="map-item-name">Fragmento de Carretel</div>
+                </div>
                 </div>
 
+                
                 <div class="map-item" onclick="toggleLayer('ss_lost_flea_Layer', this)">
                     <div class="map-item-icon" style="background-image: url('Silksong/Vida Seda/Map_Pin_Flea.png');"></div>
                     <div class="map-item-name">Pulga</div>
                 </div>
             </div>
         </div>
-
-        <div class="category-section">
-            <div class="category-title">Combate</div>
-            <div class="items-grid">
-               
-                <div class="map-item" onclick="toggleLayer('ss_boss_Layer', this)">
-                    <div class="map-item-icon" style="background-image: url('img-pins/Grimm_Troupe.webp');"></div>
-                    <div class="map-item-name">Boss</div>
-    
-                 
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Viewport -->
@@ -234,6 +248,7 @@
         <div class="markers-layer map2-layer" id="ss_memory_locket_Layer" style="display: none;"></div>
         <div class="markers-layer map2-layer" id="ss_lost_flea_Layer" style="display: none;"></div>
         <div class="markers-layer map2-layer" id="ss_shard_bundle_Layer" style="display: none;"></div>
+        <div class="markers-layer map2-layer" id="ss_spool_fragment_Layer" style="display: none;"></div>
         <div class="markers-layer map2-layer" id="ss_wish_Layer" style="display: none;"></div>
         <div class="markers-layer map2-layer" id="ss_craftmetal_Layer" style="display: none;"></div>
         <div class="markers-layer map2-layer" id="ss_shop_Layer" style="display: none;"></div>
