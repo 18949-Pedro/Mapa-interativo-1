@@ -107,13 +107,13 @@ const transportMarkers = [
 ];
 
 const shopMarkers = [
-    {x: 1987, y: 629, name: "Loja - Sly (Dirtmouth)"},
-    {x: 2030, y: 629, name: "Loja - Iselda (Dirtmouth)"},
-    {x: 2685, y: 1015, name: "Loja - Salubra (Encruzilhada Esquecida)"},
-    {x: 2112, y: 1186, name: "Loja - Ermos Fúngicos"},
-    {x: 2740, y: 1681, name: "Loja - Cidade das Lágrimas"}
+    {x: 1987, y: 629, name: "Loja - Sly (Dirtmouth)  \n\nVende:\nFragmento de mascara(150 geo) \nFragmento de mascara(500 geo) \nFragmento de mascara(800 geo) \nFragmento de mascara(1500) \nFragmento de Receptáculo(550 geo)   \nFragmento de Receptáculo(900 geo) \nChave Simples (950 geo) \nChave Elegante (800 geo) \nLanterna de Lumélula(1800 geo)\n Enxame de Colecionadores(300 geo) \nCarapaça Robusta(200 geo)\nGolpe Pesado (350 geo) \nMestre da Corrida (400 geo)" },
+    {x: 2030, y: 629, name: "Loja - Iselda (Dirtmouth) \n\nVende:\nPino de Comerciante(100 geo)  \nPino da Estação de Besouro(100 geo) \nPino de Banco(100 geo)   \nPino de Casulo(100 geo)  \nPino de Fonte Termal(100 geo)  \nPino de Raízes Sussurrantes(100 geo) \nPino de Sepultura de Guerreiro(180 geo)    \nPino de Bonde(100 geo)  \nBússola Caprichosa(220 geo)  \nPena(120 geo) \nMarcadores(100 geo)"},
+    {x: 2685, y: 1015, name: "Loja - Salubra (Encruzilhada Esquecida) \n\nVende:\nCoração de Sangue Vitale(250 geo)  \nFerrão Longo(300 geo)\nCorpo Firme(120 geo)\nPedra do Xamã(220 geo)\nFoco Rápido(800 geo)\nEncaixe de Amuleto(120 geo)\nEncaixe de Amuleto(500 geo)\nEncaixe de Amuleto(900 geo)\nEncaixe de Amuleton(1400 geo)\nBenção de Salubra(800 geo)"},
+    {x: 2112, y: 1186, name: "Loja - Come Pernas (Ermos Fúngicos) \n\nVende:\nForça Fragil(600 geo)\nCoração Fragil(350 geo)\nGanacia Fragil(250 geo)"},
+    {x: 2740, y: 1681, name: "Loja - Lemm\n\nCompra:\nDiario do Viajante(200 geo) \nSelo de hollownest(450 geo)\nidolo do Rei(800 geo)\nOvo Arcano(1200 geo)"},
+    {x: 1902, y: 629, name: "Divina - \nGanançia inquebravel(9000 geo) \nCoração Inquebrável(12000 geo) \nForça inquebravel(15000 geo) "},
 ];
-
 const SpringstMarkers = [
     {x: 2141, y: 918, name: "Springs - Dirtmouth"},
     {x: 3187, y: 1671, name: "Springs - Cidade das lagrimas"},
@@ -614,28 +614,13 @@ const ss_lostFleaMarkers = [
 ];
 
 const ss_shopMarkers = [
-    {x: 640, y: 1541, name: "Loja (Shakra)"},
-    {x: 916, y: 1723, name: "Loja (Shakra)"},
-    {x: 905, y: 1740, name: "Loja"},
-    {x: 999, y: 1634, name: "Loja (Shakra)"},
-    {x: 1156, y: 1437, name: "Loja (Shakra)"},
-    {x: 1563, y: 1428, name: "Loja (Shakra)"},
-    {x: 1505, y: 1447, name: "Loja"},
-    {x: 1938, y: 1535, name: "Loja"},
-    {x: 1869, y: 1597, name: "Loja (Shakra)"},
-    {x: 2161, y: 1616, name: "Loja (Shakra)"},
-    {x: 1800, y: 1755, name: "Loja (Shakra)"},
-    {x: 1933, y: 1791, name: "Loja"},
-    {x: 2450, y: 1642, name: "Loja"},
-    {x: 2399, y: 1766, name: "Loja (Shakra)"},
-    {x: 2203, y: 1187, name: "Loja (Shakra)"},
-    {x: 2484, y: 1372, name: "Loja (Shakra)"},
-    {x: 883, y: 1232, name: "Loja (Shakra)"},
-    {x: 621, y: 1042, name: "Loja"},
-    {x: 628, y: 946, name: "Loja (Shakra)"},
-    {x: 796, y: 761, name: "Loja (Shakra)"},
-    {x: 1858, y: 964, name: "Loja (Shakra)"},
-    {x: 2140, y: 583, name: "Loja (Shakra)"},
+    const ss_shopMarkers = [
+     {x: 905, y: 1740, name: "Loja - Pebb\n\nBroche de Magnetita(120 rosarios)\nFragmento de mascara(300 rosarios) \n Chave simples(500 Rosarios))"},
+    {x: 1505, y: 1447, name: "Loja - Plinney \n Melhora a agulha da hornet"},
+    {x: 1938, y: 1535, name: "Loja - Skarr \n\nCurvagarra(140 Rosarios) \nMascara Fraturada(260 Rosarios)"},
+    {x: 1933, y: 1791, name: "Loja - Filha da forja \n\nFragmento de Ferrão(140 Rosarios + 1  Metal Artesanal) \nSino de Magma(110 Rosarios + 1  Metal Artesanal) \nConjunto de Fabricação (180 Rosarios) \nTiro de Seda(Filha da forja)(240 Rosario + 1  Metal Artesanal + 1 Ruined Tool)"},
+    {x: 621, y: 1042, name: "Loja Grindle \n\nMarca do Ladrão(350 Rosarios) \nCatassaque(740 Rosarios)\nConjunto de Fabricação (700 Rosarios)"},
+    {x: 2450, y: 1642, name: "Loja Mort \n\nCinto Pesado(160 Rosarios) \nBolsa de Ferramentas(220 Rosarios)\n"},
 ];
 
 const ss_benchMarkers = [
