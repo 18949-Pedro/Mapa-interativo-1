@@ -115,45 +115,45 @@ const shopMarkers = [
     {x: 1902, y: 629, name: "Divina - \nGanançia inquebravel(9000 geo) \nCoração Inquebrável(12000 geo) \nForça inquebravel(15000 geo) "},
 ];
 const SpringstMarkers = [
-    {x: 2141, y: 918, name: "Springs - Dirtmouth"},
-    {x: 3187, y: 1671, name: "Springs - Cidade das lagrimas"},
-    {x: 1417, y: 2075, name: "Springs - Ninho Profundo"}
+    {x: 2141, y: 918, name: "Fonte Termal - Dirtmouth"},
+    {x: 3187, y: 1671, name: "Fonte Termal - Cidade das lagrimas"},
+    {x: 1417, y: 2075, name: "Fonte Termal - Ninho Profundo"}
 ];
 
 const maskMarkers = [
-    {x: 1987, y: 629, name: "Mascara (4) - Dirtmouth"},
-    {x: 2040, y: 629, name: "Mascara (1) - Dirtmouth"},
-    {x: 1900, y: 710, name: "Mascara (1) - Encruzilhada Esquecida"},
-    {x: 2030, y: 629, name: "Mascara (1) - Encruzilhada Esquecida"},
-    {x: 1945, y: 876, name: "Mascara (1) - Encruzilhada Esquecida"},
-    {x: 2118, y: 940, name: "Mascara (1) - Encruzilhada Esquecida"},
-    {x: 2835, y: 483, name: "Mascara (1) - Pico de Cristal"},
-    {x: 1667, y: 1037, name: "Mascara (1) - Caminho Verde"},
-    {x: 1640, y: 1410, name: "Mascara (1) - Estação da Rainha"},
-    {x: 1700, y: 1831, name: "Mascara (1) - Ermos Fúngicos"},
-    {x: 2160, y: 1817, name: "Mascara (1) - Hidrovia Real"},
-    {x: 3813, y: 1970, name: "Mascara (1) - Colmeia"},
-    {x: 3419, y: 813, name: "Mascara (1) - Terra do Descanso"}
+    {x: 1987, y: 629, name: "Mascara (4) "},
+    {x: 2040, y: 629, name: "Mascara (1) "},
+    {x: 1900, y: 710, name: "Mascara (1) "},
+    {x: 2030, y: 629, name: "Mascara (1) "},
+    {x: 1945, y: 876, name: "Mascara (1) "},
+    {x: 2118, y: 940, name: "Mascara (1) "},
+    {x: 2835, y: 483, name: "Mascara (1) "},
+    {x: 1667, y: 1037, name: "Mascara (1) "},
+    {x: 1640, y: 1410, name: "Mascara (1) "},
+    {x: 1700, y: 1831, name: "Mascara (1) "},
+    {x: 2160, y: 1817, name: "Mascara (1) "},
+    {x: 3813, y: 1970, name: "Mascara (1) "},
+    {x: 3419, y: 813, name: "Mascara (1) "}
 ];
 
 const soulMarkers = [
-    {x: 2030, y: 629, name: "Alma - Dirtmouth"},
-    {x: 1987, y: 629, name: "Alma - Dirtmouth"},
-    {x: 2088, y: 984, name: "Alma - Encruzilhada Esquecida"},
-    {x: 1010, y: 1060, name: "Alma - Dirtmouth"},
-    {x: 1847, y: 1973, name: "Alma - Ninho Prufundo"},
-    {x: 2794, y: 2131, name: "Alma - Bacia Antiga"},
-    {x: 2683, y: 1395, name: "Alma - Cidade das Lagrimas"},
-    {x: 1407, y: 390, name: "Alma - Pinhascos uivantes"},
-    {x: 3419, y: 813, name: "Alma - Terra do Descanso"}
+    {x: 2030, y: 629, name: "Alma "},
+    {x: 1987, y: 629, name: "Alma "},
+    {x: 2088, y: 984, name: "Alma "},
+    {x: 1010, y: 1060, name: "Alma "},
+    {x: 1847, y: 1973, name: "Alma "},
+    {x: 2794, y: 2131, name: "Alma "},
+    {x: 2683, y: 1395, name: "Alma "},
+    {x: 1407, y: 390, name: "Alma "},
+    {x: 3419, y: 813, name: "Alma "}
 ];
 
 const paloreMarkers = [
-    {x: 1900, y: 710, name: "Minerio Pálido - Dirtmouth"},
-    {x: 3120, y: 95, name: "Minerio Pálido - Pico de cristal"},
-    {x: 1548, y: 2131, name: "Minerio Pálidosport - Ninho Profundo"},
-    {x: 2352, y: 2125, name: "Minerio Pálido - Terra do Descanso"},
-    {x: 3712, y: 1269, name: "Minerio Pálido - Colizeu dos Tolos"}
+    {x: 1900, y: 710, name: "Minerio Pálido "},
+    {x: 3120, y: 95, name: "Minerio Pálido "},
+    {x: 1548, y: 2131, name: "Minerio Pálidosport "},
+    {x: 2352, y: 2125, name: "Minerio Pálido "},
+    {x: 3712, y: 1269, name: "Minerio Pálido "}
 ];
 
 const BossMarkers = [
@@ -229,70 +229,70 @@ const charmMarkers = [
     {x: 2112, y: 1186, name: "Coração inquebravel - Ermos Fúngicos"},
 
     //passagem do rei
-    {x: 2350, y: 906, name: "Fúria dos Caídos - Passagem do Rei"},
+    {x: 2350, y: 906, name: "Fúria dos Caídos "},
 
     //Penhascos Uivantes  
-    {x: 1460, y: 510, name: "Bênção de Joni - Penhascos Uivantes"},
-    {x: 1298, y: 664, name: "Carapaça de Baldur - Penhascos Uivantes"},
+    {x: 1460, y: 510, name: "Bênção de Joni "},
+    {x: 1298, y: 664, name: "Carapaça de Baldur "},
 
     //Caminho Verde
-    {x: 313, y: 906, name: "Forma de Unn - Caminho Verde"},
-    {x: 1288, y: 930, name: "Espinhos da Agonia - Caminho Verde"},
+    {x: 313, y: 906, name: "Forma de Unn "},
+    {x: 1288, y: 930, name: "Espinhos da Agonia "},
 
     //Ermos Fúngicos
-    {x: 1542, y: 1549, name: "Cogumelo com Esporos - Ermos Fúngicos"},
-    {x: 1988, y: 1842, name: "Mestre da corrida - Ermos Fúngicos"},
-    {x: 1995, y: 1706, name: "Marca do orgulho - Vila Louvadeus"},
+    {x: 1542, y: 1549, name: "Cogumelo com Esporos "},
+    {x: 1988, y: 1842, name: "Mestre da corrida "},
+    {x: 1995, y: 1706, name: "Marca do orgulho "},
 
     //Ninho profundo
-    {x: 973, y: 1950, name: "Canção das Tecelãs - Ninho profundo"},
-    {x: 1698, y: 2174, name: "Sombra afiada - Ninho profundo"},
+    {x: 973, y: 1950, name: "Canção das Tecelãs "},
+    {x: 1698, y: 2174, name: "Sombra afiada "},
 
     //Encruzilhada Esquecida
-    {x: 2041, y: 840, name: "Sombra afiada - Encruzilhada Esquecida"},
-    {x: 2327, y: 818, name: "Sombra afiada - Encruzilhada Esquecida"},
+    {x: 2041, y: 840, name: "Sombra afiada "},
+    {x: 2327, y: 818, name: "Sombra afiada "},
 
     //Pico de cristal
-    {x: 2479, y: 663, name: "Foco profundo - Pico de cristal"},
+    {x: 2479, y: 663, name: "Foco profundo "},
 
     //Terra do Descanso
-    {x: 3408, y: 813, name: "Portador dos Sonhos - Terra do Descanso"},
-    {x: 3324, y: 859, name: "Escudo dos Sonhos - Terra do Descanso"},
-    {x: 3735, y: 983, name: "devorador de almas - Terra do Descanso"},
+    {x: 3408, y: 813, name: "Portador dos Sonhos "},
+    {x: 3324, y: 859, name: "Escudo dos Sonhos "},
+    {x: 3735, y: 983, name: "devorador de almas "},
 
     //Cidade das lagrimas
-    {x: 2822, y: 1214, name: "Dobrador de Magias - Cidade das lagrimas"},
+    {x: 2822, y: 1214, name: "Dobrador de Magias "},
 
     //Hidrovia Real
-    {x: 2953, y: 1809, name: "Insígnia do Defensor - Hidrovia Real"},
-    {x: 2421, y: 1934, name: "Ninho de Flukes - Hidrovia Real"},
+    {x: 2953, y: 1809, name: "Insígnia do Defensor "},
+    {x: 2421, y: 1934, name: "Ninho de Flukes "},
 
     //Borda do reino
-    {x: 4213, y: 1913, name: "corte rapido - Borda do reino"},
+    {x: 4213, y: 1913, name: "corte rapido  "},
 
     //Colmeia
-    {x: 4074, y: 1987, name: "Sangue da Colmeia - Colmeia"},
+    {x: 4074, y: 1987, name: "Sangue da Colmeia "},
 
     //Abismo
-    {x: 2551, y: 2643, name: "Coração de Sangue Vital - Abismo"},
-    {x: 2641, y: 2765, name: "Coração Vazio - Abismo"},
+    {x: 2551, y: 2643, name: "Coração de Sangue Vital "},
+    {x: 2641, y: 2765, name: "Coração Vazio "},
     
     //Fragmento de alma do rei
-    {x: 550, y: 1147, name: "Alma do Rei(Fragmento) - Jardins da rainha"},
-    {x: 550, y: 1147, name: "Alma do Rei(Fragmento) - Bacia Antiga"},
+    {x: 550, y: 1147, name: "Alma do Rei(Fragmento) "},
+    {x: 550, y: 1147, name: "Alma do Rei(Fragmento) "},
 
 ];
 
 const abilityMarkers = [
-    {x: 810, y: 727, name: "Manto de Asa de Mariposa - Caminho verde"},
-    {x: 1091, y: 860, name: "Garra do Louva-a-Deus  - Vila Louva-a-Deus"},
-    {x: 2891, y: 855, name: "Coração de Cristal - Pico de cristal"},
-    {x: 2629, y: 2255, name: "Asas do monarca - Bacia antiga"},
-    {x: 1600, y: 1230, name: "Lagrimas de Isma - Hidrovia Real"},
-    {x: 3641, y: 2747, name: "Manto Sombrio - Abismo"},
+    {x: 810, y: 727, name: "Manto de Asa de Mariposa "},
+    {x: 1091, y: 860, name: "Garra do Louva-a-Deus "},
+    {x: 2891, y: 855, name: "Coração de Cristal  "},
+    {x: 2629, y: 2255, name: "Asas do monarca "},
+    {x: 1600, y: 1230, name: "Lagrimas de Isma "},
+    {x: 3641, y: 2747, name: "Manto Sombrio "},
     {x: 3548, y: 863, name: "Ferrão dos Sonhos - Terra do Descanso"},
-    {x: 3548, y: 863, name: "Ferrão dos Sonhos(Despertado) - Terra do Descanso (1800 Essence)"},
-    {x: 3548, y: 863, name: "Portal dos sonhos - Terra do Descanso (900 Essence)"}
+    {x: 3548, y: 863, name: "Ferrão dos Sonhos(Despertado) (1800 Essence)"},
+    {x: 3548, y: 863, name: "Portal dos sonhos (900 Essence)"}
 ];
 
 const nailArtMarkers = [
@@ -315,131 +315,131 @@ const keyMarkers = [
 ];
 
 const relicMarkers = [
-    {x: 2028, y: 660, name: "Selo de hollownest - Encruzilhada Esquecida"},
-    {x: 1885, y: 709, name: "Selo de hollownest - Encruzilhada Esquecida"},
-    {x: 3400, y: 815, name: "Selo de hollownest - Terra do descanço"},
-    {x: 3460, y: 985, name: "Selo de hollownest - Terra do descanço"},
-    {x: 1117, y: 978, name: "Selo de hollownest - Caminho Verde"},
-    {x: 485, y: 1284, name: "Selo de hollownest - Gardins da Rainha"},
-    {x: 1797, y: 1042, name: "Selo de hollownest - Canion da névua"},
-    {x: 2891, y: 855, name: "Selo de hollownest - Canion da névua"},
-    {x: 1510, y: 1411, name: "Selo de hollownest - Estação da Rainha"},
-    {x: 1578, y: 1741, name: "Selo de hollownest - Ninho Profundo"},
-    {x: 309, y: 1873, name: "Selo de hollownest - Ninho Profundo"},
-    {x: 1787, y: 1309, name: "Selo de hollownest - Ermos fundicos"},
-    {x: 1994, y: 1729, name: "Selo de hollownest - Ermos fundicos"},
-    {x: 2541, y: 1332, name: "Selo de hollownest - Pico de Cristal"},
-    {x: 2963, y: 1342, name: "Selo de hollownest - Pico de Cristal"},
-    {x: 2531, y: 1621, name: "Selo de hollownest - Pico de Cristal"},
-    {x: 3459, y: 1644, name: "Selo de hollownest - Pico de Cristal"},
+    {x: 2028, y: 660, name: "Selo de hollownest "},
+    {x: 1885, y: 709, name: "Selo de hollownest "},
+    {x: 3400, y: 815, name: "Selo de hollownest "},
+    {x: 3460, y: 985, name: "Selo de hollownest "},
+    {x: 1117, y: 978, name: "Selo de hollownest "},
+    {x: 485, y: 1284, name: "Selo de hollownest "},
+    {x: 1797, y: 1042, name: "Selo de hollownest"},
+    {x: 2891, y: 855, name: "Selo de hollownest "},
+    {x: 1510, y: 1411, name: "Selo de hollownest"},
+    {x: 1578, y: 1741, name: "Selo de hollownest"},
+    {x: 309, y: 1873, name: "Selo de hollownest"},
+    {x: 1787, y: 1309, name: "Selo de hollownest"},
+    {x: 1994, y: 1729, name: "Selo de hollownest"},
+    {x: 2541, y: 1332, name: "Selo de hollownest"},
+    {x: 2963, y: 1342, name: "Selo de hollownest"},
+    {x: 2531, y: 1621, name: "Selo de hollownest"},
+    {x: 3459, y: 1644, name: "Selo de hollownest"},
 
     //idolo do Rei
-    {x: 1012, y: 583, name: "idolo do Rei - Penhascos Uivantes"},
-    {x: 1873, y: 707, name: "idolo do Rei - Encruzilhada Esquecida"},
-    {x: 2706, y: 554, name: "idolo do Rei - Pico de Cristal"},
-    {x: 3546, y: 1340, name: "idolo do Rei - Borda do reino"},
-    {x: 4160, y: 1374, name: "idolo do Rei - Borda do reino"},
-    {x: 3707, y: 783, name: "idolo do Rei - Terra do Tescanso"},
-    {x: 2988, y: 1848, name: "idolo do Rei - Hidrovia Real"},
-    {x: 1257, y: 1854, name: "idolo do Rei - Ninho Profundo"},
+    {x: 1012, y: 583, name: "idolo do Rei "},
+    {x: 1873, y: 707, name: "idolo do Rei"},
+    {x: 2706, y: 554, name: "idolo do Rei"},
+    {x: 3546, y: 1340, name: "idolo do Rei"},
+    {x: 4160, y: 1374, name: "idolo do Rei"},
+    {x: 3707, y: 783, name: "idolo do Rei"},
+    {x: 2988, y: 1848, name: "idolo do Rei"},
+    {x: 1257, y: 1854, name: "idolo do Rei"},
     
     //Ovo Arcano 
-    {x: 3387, y: 810, name: "Ovo Arcano - Terra do Descanço"},
-    {x: 3566, y: 2753, name: "Ovo Arcano - Abismo"},
-    {x: 2434, y: 2661, name: "Ovo Arcano - Abismo"},
-    {x: 2639, y: 2747, name: "Ovo Arcano - Abismo"},
+    {x: 3387, y: 810, name: "Ovo Arcano "},
+    {x: 3566, y: 2753, name: "Ovo Arcano "},
+    {x: 2434, y: 2661, name: "Ovo Arcano "},
+    {x: 2639, y: 2747, name: "Ovo Arcano "},
 
     // Diario do Viajante
-    {x: 1156, y: 543, name: "Diario do Viajante - Penhascos Uivantes"},
-    {x: 969, y: 786, name: "Diario do Viajante - Caminho Verde"},
-    {x: 1495, y: 1063, name: "Diario do Viajante - Caminho Verde"},
-    {x: 3006, y: 483, name: "Diario do Viajante - Pico de Cristal"},
-    {x: 3737, y: 1003, name: "Diario do Viajante - Terra do descanço"},
-    {x: 1870, y: 1367, name: "Diario do Viajante - Ermos Fundigos"},
-    {x: 1889, y: 1584, name: "Diario do Viajante - Ermos Fundigos"},
-    {x: 2316, y: 1288, name: "Diario do Viajante - Cidade das Lagrimas"},
-    {x: 3218, y: 1554, name: "Diario do Viajante - Cidade das Lagrimas"},
-    {x: 3429, y: 1592, name: "Diario do Viajante - Cidade das Lagrimas"},
-    {x: 2971, y: 2035, name: "Diario do Viajante - Bacia Antiga"},
-    {x: 4035, y: 1583, name: "Diario do Viajante - Borda do reino"},
-    {x: 3675, y: 1652, name: "Diario do Viajante - Borda do reino"},
-    {x: 3959, y: 1771, name: "Diario do Viajante - Borda do reino"},
+    {x: 1156, y: 543, name: "Diario do Viajante"},
+    {x: 969, y: 786, name: "Diario do Viajante"},
+    {x: 1495, y: 1063, name: "Diario do Viajante"},
+    {x: 3006, y: 483, name: "Diario do Viajante"},
+    {x: 3737, y: 1003, name: "Diario do Viajante"},
+    {x: 1870, y: 1367, name: "Diario do Viajante"},
+    {x: 1889, y: 1584, name: "Diario do Viajante "},
+    {x: 2316, y: 1288, name: "Diario do Viajante "},
+    {x: 3218, y: 1554, name: "Diario do Viajante "},
+    {x: 3429, y: 1592, name: "Diario do Viajante "},
+    {x: 2971, y: 2035, name: "Diario do Viajante "},
+    {x: 4035, y: 1583, name: "Diario do Viajante "},
+    {x: 3675, y: 1652, name: "Diario do Viajante "},
+    {x: 3959, y: 1771, name: "Diario do Viajante"},
 ];
 
 const grubMarkers = [
     // Encruzilhada Esquecida
-    {x: 1732, y: 933, name: "Larva - Encruzilhada Esquecida"},
-    {x: 2123, y: 753, name: "Larva - Encruzilhada Esquecida"},
-    {x: 2570, y: 704, name: "Larva- Encruzilhada Esquecida"},
-    {x: 2458, y: 901, name: "Larva - Encruzilhada Esquecida"},
-    {x: 2392, y: 838, name: "Larva - Encruzilhada Esquecida"},
+    {x: 1732, y: 933, name: "Larva"},
+    {x: 2123, y: 753, name: "Larva"},
+    {x: 2570, y: 704, name: "Larva"},
+    {x: 2458, y: 901, name: "Larva"},
+    {x: 2392, y: 838, name: "Larva "},
     
     // Caminho Verde
-    {x: 1026, y: 704, name: "Larva - Caminho Verde"},
-    {x: 1619, y: 871, name: "Larva - Caminho Verde"},
-    {x: 1563, y: 978, name: "Larva - Caminho Verde"},
-    {x: 1082, y: 1068, name: "Larva - Caminho Verde"},
+    {x: 1026, y: 704, name: "Larva"},
+    {x: 1619, y: 871, name: "Larva "},
+    {x: 1563, y: 978, name: "Larva "},
+    {x: 1082, y: 1068, name: "Larva "},
     
      // Penhascos Uivantes
-    {x: 1315, y: 584, name: "Larva - Penhascos Uivantes"},
+    {x: 1315, y: 584, name: "Larva"},
     
     // Ermos Fundicos
-    {x: 1884, y: 1435, name: "Larva - Ermos Fundicos"},
-    {x: 1482, y: 1519, name: "Larva - Ermos Fundicos"},
+    {x: 1884, y: 1435, name: "Larva"},
+    {x: 1482, y: 1519, name: "Larva"},
     
     // Canion da névua
-    {x: 1560, y: 1199, name: "Larva - Canion da névua"},
+    {x: 1560, y: 1199, name: "Larva"},
     
     // gardins da Rainha
-    {x: 856, y: 1020, name: "Larva - gardins da Rainha"},
-    {x: 498, y: 1148, name: "Larva - gardins da Rainha"},
-    {x: 832, y: 1403, name: "Larva - gardins da Rainha"},
+    {x: 856, y: 1020, name: "Larva"},
+    {x: 498, y: 1148, name: "Larva"},
+    {x: 832, y: 1403, name: "Larva"},
     
     // Ninho Profundo
-    {x: 313, y: 1848, name: "Larva - Ninho Profundo"},
-    {x: 1612, y: 1628, name: "Larva - Ninho Profundo"},
-    {x: 807, y: 1928, name: "Larva - Ninho Profundo"},
-    {x: 1279, y: 1892, name: "Larva - Ninho Profundo"},
-    {x: 1250, y: 2089, name: "Larva - Ninho Profundo"},
+    {x: 313, y: 1848, name: "Larva"},
+    {x: 1612, y: 1628, name: "Larva"},
+    {x: 807, y: 1928, name: "Larva"},
+    {x: 1279, y: 1892, name: "Larva"},
+    {x: 1250, y: 2089, name: "Larva"},
     
     // Bacia Antiga
-    {x: 2203, y: 2163, name: "Larva - Bacia Antiga"},
-    {x: 2525, y: 2150, name: "Larva - Bacia Antiga"},
+    {x: 2203, y: 2163, name: "Larva"},
+    {x: 2525, y: 2150, name: "Larva"},
 
     // Borda do Reino
-    {x: 2379, y: 1943, name: "Larva - Borda do Reino"},
-    {x: 7991, y: 1730, name: "Larva - Borda do Reino"},
+    {x: 2379, y: 1943, name: "Larva"},
+    {x: 7991, y: 1730, name: "Larva"},
 
     // Colmeia
-    {x: 3901, y: 1910, name: "Larva - Colmeia"},
-    {x: 3562, y: 1912, name: "Larva - Colmeia"},
+    {x: 3901, y: 1910, name: "Larva"},
+    {x: 3562, y: 1912, name: "Larva"},
 
     //Cidade das Lagrimas
-    {x: 2513, y: 1297, name: "Larva - Cidade das Lagrimas"},
-    {x: 2993, y: 1443, name: "Larva - Cidade das Lagrimas"},
-    {x: 2747, y: 1479, name: "Larva - Cidade das Lagrimas"},
-    {x: 3265, y: 1691, name: "Larva - Cidade das Lagrimas"},
-    {x: 3570, y: 1724, name: "Larva - Cidade das Lagrimas"},
-    {x: 3585, y: 1491, name: "Larva - Cidade das Lagrimas"},
-    {x: 3602, y: 1491, name: "Larva - Cidade das Lagrimas"},
-    {x: 3620, y: 1491, name: "Larva - Cidade das Lagrimas"},
+    {x: 2513, y: 1297, name: "Larva"},
+    {x: 2993, y: 1443, name: "Larva"},
+    {x: 2747, y: 1479, name: "Larva"},
+    {x: 3265, y: 1691, name: "Larva"},
+    {x: 3570, y: 1724, name: "Larva"},
+    {x: 3585, y: 1491, name: "Larva"},
+    {x: 3602, y: 1491, name: "Larva"},
+    {x: 3620, y: 1491, name: "Larva"},
 
     // Hidrovia real
-    {x: 3386, y: 1786, name: "Larva - Hidrovia real"},
-    {x: 3392, y: 1850, name: "Larva - Hidrovia real"},
-    {x: 2551, y: 1823, name: "Larva - Hidrovia real"},
+    {x: 3386, y: 1786, name: "Larva"},
+    {x: 3392, y: 1850, name: "Larva"},
+    {x: 2551, y: 1823, name: "Larva"},
 
     // Terra do descanço
-    {x: 3552, y: 982, name: "Larva - Terra do descanço"},
+    {x: 3552, y: 982, name: "Larva"},
 
     // Pico de Cristal
-    {x: 3308, y: 754, name: "Larva - Pico de Cristal"},
-    {x: 3402, y: 434, name: "Larva - Pico de Cristal"},
-    {x: 2290, y: 646, name: "Larva - Pico de Cristal"},
-    {x: 2808, y: 697, name: "Larva - Pico de Cristal"},
-    {x: 2878, y: 601, name: "Larva - Pico de Cristal"},
-    {x: 3056, y: 600, name: "Larva - Pico de Cristal"},
-    {x: 2929, y: 722, name: "Larva - Pico de Cristal"}
+    {x: 3308, y: 754, name: "Larva"},
+    {x: 3402, y: 434, name: "Larva"},
+    {x: 2290, y: 646, name: "Larva"},
+    {x: 2808, y: 697, name: "Larva"},
+    {x: 2878, y: 601, name: "Larva"},
+    {x: 3056, y: 600, name: "Larva"},
+    {x: 2929, y: 722, name: "Larva"}
 ];
 
 // Marcadores para Mapa 2 (Silksong)
